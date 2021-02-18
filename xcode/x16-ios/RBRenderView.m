@@ -229,8 +229,6 @@ RBRenderView* INSTANCE_OF_RENDERVIEW = NULL;
 @end
 
 void platform_render_buffer(uint8_t* framebuffer) {
-    CFRunLoopRun();
-    
     dispatch_sync(dispatch_get_main_queue(), ^{
         [INSTANCE_OF_RENDERVIEW render:framebuffer];
     });

@@ -90,7 +90,7 @@ int window_scale = 1;
 char *scale_quality = "best";
 
 int frames;
-int32_t sdlTicks_base;
+double sdlTicks_base;
 int32_t last_perf_update;
 int32_t perf_frame_count;
 char window_title[30];
@@ -245,8 +245,8 @@ void
 timing_update()
 {
 	frames++;
-	int32_t sdlTicks = platform_get_ticks() - sdlTicks_base;
-	int32_t diff_time = 1000 * frames / 60 - sdlTicks;
+	double sdlTicks = platform_get_ticks() - sdlTicks_base;
+	double diff_time = 1000 * frames / 60 - sdlTicks;
 	if (!warp_mode && diff_time > 0) {
 		usleep(1000 * diff_time);
 	}
@@ -1032,7 +1032,7 @@ emulator_loop(void *param)
 		audio_render(clocks);
 
 		instruction_counter++;
-
+        
 		if (new_frame) {
 			if (!video_update()) {
 				break;

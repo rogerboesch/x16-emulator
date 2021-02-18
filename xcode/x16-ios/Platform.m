@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#include <sys/time.h>
 
 char* platform_rom_file(void) {
     NSString* path = [[NSBundle mainBundle] pathForResource:@"rom" ofType:@"bin"];
@@ -27,8 +28,9 @@ char* platform_get_gif_path(void) {
     return (char *)[path UTF8String];
 }
 
-int platform_get_ticks(void) {
-    return 0;
+double platform_get_ticks(void) {
+    CFAbsoluteTime timeInSeconds = CFAbsoluteTimeGetCurrent();
+    return timeInSeconds*1000.0;
 }
 
 FILE* platform_file_open(char* path, char* mode) {

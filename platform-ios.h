@@ -10,7 +10,7 @@
 
 char* platform_get_base_path(void);
 char* platform_get_gif_path(void);
-int platform_get_ticks(void);
+double platform_get_ticks(void);
 
 FILE* platform_file_open(char* path, char* mode);
 size_t platform_file_read(FILE* fp, void* buf, size_t size, size_t mnemb);
