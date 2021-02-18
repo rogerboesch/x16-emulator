@@ -215,8 +215,8 @@ RBRenderView* INSTANCE_OF_RENDERVIEW = NULL;
     INSTANCE_OF_RENDERVIEW = self;
     
     self.renderImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    self.renderImageView.contentMode = UIViewContentModeScaleAspectFit;
-    //self.renderImageView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
+    self.renderImageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.renderImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self addSubview:self.renderImageView];
 
 	return self;
@@ -229,7 +229,9 @@ RBRenderView* INSTANCE_OF_RENDERVIEW = NULL;
 @end
 
 void platform_render_buffer(uint8_t* framebuffer) {
-    dispatch_async(dispatch_get_main_queue(), ^{
+    CFRunLoopRun();
+    
+    dispatch_sync(dispatch_get_main_queue(), ^{
         [INSTANCE_OF_RENDERVIEW render:framebuffer];
     });
 }

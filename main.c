@@ -885,7 +885,6 @@ int main(int argc, char **argv)
 
 	audio_close();
 	video_end();
-	//SDL_Quit();
 
 #ifdef PERFSTAT
 	for (int pc = 0xc000; pc < sizeof(stat)/sizeof(*stat); pc++) {

@@ -24,10 +24,10 @@
     CGRect rect = self.view.bounds;
     rect.origin.x += 10;
     rect.size.width -= 20;
-    rect.origin.y = 60;
+    rect.origin.y = 100;
 
     float factor = 640 / rect.size.width;
-    rect.size.height = 400 * factor;
+    rect.size.height = 400 / factor;
     
     self.renderView.frame = rect;
     
@@ -37,10 +37,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = UIColor.blackColor;
+    
     self.renderView = [[RBRenderView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.renderView];
 
     self.supportField = [[RBKeyboardSupportField alloc] initWithFrame:CGRectMake(2400, 2400, 100, 20)];
+    self.supportField.keyboardAppearance = UIKeyboardAppearanceDark;
     [self.view addSubview:self.supportField];
 
 }
