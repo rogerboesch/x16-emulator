@@ -200,6 +200,13 @@ static char pixels[] =
 	"................................................................................................";
 #endif
 
+#ifdef TARGET_OS_IPHONE
+
+SDL_Surface *CommanderX16Icon() {
+    return 0;
+}
+                   
+#else
 SDL_Surface *CommanderX16Icon()
 {
 	const SDL_Color color[8] = {
@@ -226,3 +233,5 @@ SDL_Surface *CommanderX16Icon()
 	SDL_SetPaletteColors(surface->format->palette, color+8, ' ', 1);
 	return surface;
 }
+
+#endif

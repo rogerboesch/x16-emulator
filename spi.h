@@ -5,7 +5,7 @@
 #ifndef _SPI_H_
 #define _SPI_H_
 
-void spi_init();
-void spi_step();
+void spi_init(void);
+void spi_step(void);
 
 #endif

@@ -41,6 +41,8 @@
 #include <pthread.h>
 #endif
 
+#include <ctype.h>
+
 void *emulator_loop(void *param);
 void emscripten_main_loop(void);
 
@@ -188,7 +190,7 @@ machine_dump()
 		}
 		index++;
 	}
-	SDL_RWops *f = SDL_RWFromFile(filename, "wb");
+    SDL_RWops *f = SDL_RWFromFile(filename, "wb");
 	if (!f) {
 		printf("Cannot write to %s!\n", filename);
 		return;
@@ -234,7 +236,7 @@ machine_paste(char *s)
 void
 timing_init() {
 	frames = 0;
-	sdlTicks_base = SDL_GetTicks();
+	sdlTicks_base = platform_get_ticks();
 	last_perf_update = 0;
 	perf_frame_count = 0;
 }
@@ -243,7 +245,7 @@ void
 timing_update()
 {
 	frames++;
-	int32_t sdlTicks = SDL_GetTicks() - sdlTicks_base;
+	int32_t sdlTicks = platform_get_ticks() - sdlTicks_base;
 	int32_t diff_time = 1000 * frames / 60 - sdlTicks;
 	if (!warp_mode && diff_time > 0) {
 		usleep(1000 * diff_time);
@@ -464,9 +466,20 @@ usage_keymap()
 	exit(1);
 }
 
-int
-main(int argc, char **argv)
+#ifdef TARGET_OS_IPHONE
+
+extern int platform_argc;
+extern char** platform_argv;
+
+int platform_main()
 {
+    int argc = platform_argc;
+    char** argv = platform_argv;
+    
+#else
+int main(int argc, char **argv)
+{
+#endif
 	char *rom_filename = "rom.bin";
 	char rom_path_data[PATH_MAX];
 
@@ -483,7 +496,7 @@ main(int argc, char **argv)
 
 	run_after_load = false;
 
-	char *base_path = SDL_GetBasePath();
+	char *base_path = platform_get_base_path();
 
 	// This causes the emulator to load ROM data from the executable's directory when
 	// no ROM file is specified on the command line.
@@ -786,7 +799,7 @@ main(int argc, char **argv)
 		}
 	}
 
-	SDL_RWops *f = SDL_RWFromFile(rom_path, "rb");
+    SDL_RWops *f = SDL_RWFromFile(rom_path, "rb");
 	if (!f) {
 		printf("Cannot open %s!\n", rom_path);
 		exit(1);
@@ -820,7 +833,7 @@ main(int argc, char **argv)
 	}
 
 	if (bas_path) {
-		SDL_RWops *bas_file = SDL_RWFromFile(bas_path, "r");
+        SDL_RWops *bas_file = SDL_RWFromFile(bas_path, "r");
 		if (!bas_file) {
 			printf("Cannot open %s!\n", bas_path);
 			exit(1);
@@ -843,7 +856,7 @@ main(int argc, char **argv)
 		snprintf(paste_text, sizeof(paste_text_data), "TEST %d\r", test_number);
 	}
 
-	SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS | SDL_INIT_GAMECONTROLLER | SDL_INIT_AUDIO);
+	//SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS | SDL_INIT_GAMECONTROLLER | SDL_INIT_AUDIO);
 
 	audio_init(audio_dev_name, audio_buffers);
 
@@ -866,7 +879,7 @@ main(int argc, char **argv)
 
 	audio_close();
 	video_end();
-	SDL_Quit();
+	//SDL_Quit();
 
 #ifdef PERFSTAT
 	for (int pc = 0xc000; pc < sizeof(stat)/sizeof(*stat); pc++) {

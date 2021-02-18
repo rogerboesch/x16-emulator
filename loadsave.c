@@ -8,11 +8,11 @@
 #include <sys/stat.h>
 #include <dirent.h>
 #include <unistd.h>
-#include <SDL.h>
 #include "glue.h"
 #include "memory.h"
 #include "video.h"
 #include "rom_symbols.h"
+#include "platform-ios.h"
 
 #define MIN(a,b) (((a)<(b))?(a):(b))
 #define MAX(a,b) (((a)>(b))?(a):(b))
@@ -133,7 +133,7 @@ LOAD()
 		RAM[STATUS] = 0;
 		a = 0;
 	} else {
-		SDL_RWops *f = SDL_RWFromFile(filename, "rb");
+        SDL_RWops *f = SDL_RWFromFile(filename, "rb");
 		if (!f) {
 			a = 4; // FNF
 			RAM[STATUS] = a;
@@ -212,7 +212,7 @@ SAVE()
 		return;
 	}
 
-	SDL_RWops *f = SDL_RWFromFile(filename, "wb");
+    SDL_RWops *f = SDL_RWFromFile(filename, "wb");
 	if (!f) {
 		a = 4; // FNF
 		RAM[STATUS] = a;

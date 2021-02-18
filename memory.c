@@ -13,6 +13,7 @@
 #include "ym2151.h"
 #include "ps2.h"
 #include "cpu/fake6502.h"
+#include "platform-ios.h"
 
 uint8_t ram_bank;
 uint8_t rom_bank;

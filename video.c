@@ -170,6 +170,9 @@ video_reset()
 bool
 video_init(int window_scale, char *quality)
 {
+    // TODO: Implement
+    
+    /*
 	uint32_t window_flags = SDL_WINDOW_ALLOW_HIGHDPI;
 
 #ifdef __EMSCRIPTEN__
@@ -215,6 +218,8 @@ video_init(int window_scale, char *quality)
 		DEBUGInitUI(renderer);
 	}
 
+     */
+    
 	return true;
 }
 
@@ -1068,7 +1073,9 @@ video_update()
 		}
 	}
 
-	SDL_UpdateTexture(sdlTexture, NULL, framebuffer, SCREEN_WIDTH * 4);
+    // TODO: Implement
+
+	//SDL_UpdateTexture(sdlTexture, NULL, framebuffer, SCREEN_WIDTH * 4);
 
 	if (record_gif > RECORD_GIF_PAUSED) {
 		if(!GifWriteFrame(&gif_writer, framebuffer, SCREEN_WIDTH, SCREEN_HEIGHT, 2, 8, false)) {
@@ -1082,17 +1089,18 @@ video_update()
 		}
 	}
 
-	SDL_RenderClear(renderer);
-	SDL_RenderCopy(renderer, sdlTexture, NULL, NULL);
+	//SDL_RenderClear(renderer);
+    //SDL_RenderCopy(renderer, sdlTexture, NULL, NULL);
 
 	if (debugger_enabled && showDebugOnRender != 0) {
 		DEBUGRenderDisplay(SCREEN_WIDTH, SCREEN_HEIGHT);
-		SDL_RenderPresent(renderer);
+        //SDL_RenderPresent(renderer);
 		return true;
 	}
 
-	SDL_RenderPresent(renderer);
+    //SDL_RenderPresent(renderer);
 
+    /*
 	SDL_Event event;
 	while (SDL_PollEvent(&event)) {
 		if (event.type == SDL_QUIT) {
@@ -1168,6 +1176,8 @@ video_update()
 			mouse_y = event.motion.y;
 		}
 	}
+     
+     */
 	return true;
 }
 
@@ -1183,8 +1193,8 @@ video_end()
 		record_gif = RECORD_GIF_DISABLED;
 	}
 
-	SDL_DestroyRenderer(renderer);
-	SDL_DestroyWindow(window);
+	//SDL_DestroyRenderer(renderer);
+	//SDL_DestroyWindow(window);
 }
 
 
@@ -1411,7 +1421,7 @@ void video_write(uint8_t reg, uint8_t value) {
 void
 video_update_title(const char* window_title)
 {
-	SDL_SetWindowTitle(window, window_title);
+	//SDL_SetWindowTitle(window, window_title);
 }
 
 bool video_is_tilemap_address(int addr)

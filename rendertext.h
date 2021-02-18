@@ -2,9 +2,9 @@
 #ifndef _RENDERTEXT_H
 #define _RENDERTEXT_H
 
-#include <SDL.h>
-
 #define CHAR_SCALE 		(1)										// character pixel size.
+
+#include "platform-ios.h"
 
 extern int xPos;
 extern int yPos;

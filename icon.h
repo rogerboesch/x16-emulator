@@ -5,7 +5,7 @@
 #ifndef _ICON_H_
 #define _ICON_H_
 
-#include <SDL.h>
+#include "platform-ios.h"
 
 SDL_Surface *CommanderX16Icon();
 

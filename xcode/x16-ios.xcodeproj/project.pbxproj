@@ -1,0 +1,577 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DBF6055025DECF7500936ABC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF6054F25DECF7500936ABC /* AppDelegate.m */; };
+		DBF6055325DECF7500936ABC /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF6055225DECF7500936ABC /* SceneDelegate.m */; };
+		DBF6055625DECF7500936ABC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF6055525DECF7500936ABC /* ViewController.m */; };
+		DBF6055925DECF7500936ABC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBF6055725DECF7500936ABC /* Main.storyboard */; };
+		DBF6055B25DECF7500936ABC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBF6055A25DECF7500936ABC /* Assets.xcassets */; };
+		DBF6055E25DECF7500936ABC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBF6055C25DECF7500936ABC /* LaunchScreen.storyboard */; };
+		DBF6056125DECF7500936ABC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF6056025DECF7500936ABC /* main.m */; };
+		DBF605FA25DEE31900936ABC /* Platform.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF605F925DEE31900936ABC /* Platform.m */; };
+		DBF6064925DEE4E900936ABC /* loadsave.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6060025DEE4E800936ABC /* loadsave.c */; };
+		DBF6064A25DEE4E900936ABC /* ps2.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6060125DEE4E800936ABC /* ps2.c */; };
+		DBF6064B25DEE4E900936ABC /* vera_spi.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6060225DEE4E800936ABC /* vera_spi.c */; };
+		DBF6064C25DEE4E900936ABC /* memory.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6060425DEE4E800936ABC /* memory.c */; };
+		DBF6064E25DEE4E900936ABC /* vera_psg.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6060625DEE4E800936ABC /* vera_psg.c */; };
+		DBF6064F25DEE4E900936ABC /* keyboard.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6060A25DEE4E800936ABC /* keyboard.c */; };
+		DBF6065125DEE4E900936ABC /* via.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6060C25DEE4E800936ABC /* via.c */; };
+		DBF6065225DEE4E900936ABC /* 65c02.opcodes in Resources */ = {isa = PBXBuildFile; fileRef = DBF6060E25DEE4E800936ABC /* 65c02.opcodes */; };
+		DBF6065325DEE4E900936ABC /* fake6502.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6061025DEE4E800936ABC /* fake6502.c */; };
+		DBF6065525DEE4E900936ABC /* .editorconfig in Resources */ = {isa = PBXBuildFile; fileRef = DBF6061225DEE4E800936ABC /* .editorconfig */; };
+		DBF6065625DEE4E900936ABC /* 6502.opcodes in Resources */ = {isa = PBXBuildFile; fileRef = DBF6061725DEE4E800936ABC /* 6502.opcodes */; };
+		DBF6065925DEE4E900936ABC /* rendertext.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6061C25DEE4E800936ABC /* rendertext.c */; };
+		DBF6065B25DEE4E900936ABC /* vera_pcm.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6062225DEE4E800936ABC /* vera_pcm.c */; };
+		DBF6065E25DEE4E900936ABC /* ym2151.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6062A25DEE4E900936ABC /* ym2151.c */; };
+		DBF6065F25DEE4E900936ABC /* disasm.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6062C25DEE4E900936ABC /* disasm.c */; };
+		DBF6066025DEE4E900936ABC /* debugger.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6062E25DEE4E900936ABC /* debugger.c */; };
+		DBF6066125DEE4E900936ABC /* video.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6063025DEE4E900936ABC /* video.c */; };
+		DBF6066325DEE4E900936ABC /* symbolize.sh in Resources */ = {isa = PBXBuildFile; fileRef = DBF6063425DEE4E900936ABC /* symbolize.sh */; };
+		DBF6066425DEE4E900936ABC /* rom_symbols.sh in Resources */ = {isa = PBXBuildFile; fileRef = DBF6063525DEE4E900936ABC /* rom_symbols.sh */; };
+		DBF6066725DEE4E900936ABC /* platform-audio.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6063925DEE4E900936ABC /* platform-audio.c */; };
+		DBF6066825DEE4E900936ABC /* icon.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6063A25DEE4E900936ABC /* icon.c */; };
+		DBF6066A25DEE4E900936ABC /* platform-joystick.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6063D25DEE4E900936ABC /* platform-joystick.c */; };
+		DBF6066C25DEE4E900936ABC /* sdcard.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6064225DEE4E900936ABC /* sdcard.c */; };
+		DBF6066D25DEE4E900936ABC /* spi.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6064525DEE4E900936ABC /* spi.c */; };
+		DBF6066E25DEE4E900936ABC /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6064625DEE4E900936ABC /* main.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		DBF6054B25DECF7500936ABC /* x16-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "x16-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBF6054E25DECF7500936ABC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		DBF6054F25DECF7500936ABC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		DBF6055125DECF7500936ABC /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		DBF6055225DECF7500936ABC /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		DBF6055425DECF7500936ABC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		DBF6055525DECF7500936ABC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		DBF6055825DECF7500936ABC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DBF6055A25DECF7500936ABC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DBF6055D25DECF7500936ABC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DBF6055F25DECF7500936ABC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBF6056025DECF7500936ABC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DBF605F925DEE31900936ABC /* Platform.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Platform.m; sourceTree = "<group>"; };
+		DBF605FE25DEE4E800936ABC /* sdcard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sdcard.h; path = ../../sdcard.h; sourceTree = "<group>"; };
+		DBF605FF25DEE4E800936ABC /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = version.h; path = ../../version.h; sourceTree = "<group>"; };
+		DBF6060025DEE4E800936ABC /* loadsave.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = loadsave.c; path = ../../loadsave.c; sourceTree = "<group>"; };
+		DBF6060125DEE4E800936ABC /* ps2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ps2.c; path = ../../ps2.c; sourceTree = "<group>"; };
+		DBF6060225DEE4E800936ABC /* vera_spi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = vera_spi.c; path = ../../vera_spi.c; sourceTree = "<group>"; };
+		DBF6060325DEE4E800936ABC /* debugger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = debugger.h; path = ../../debugger.h; sourceTree = "<group>"; };
+		DBF6060425DEE4E800936ABC /* memory.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = memory.c; path = ../../memory.c; sourceTree = "<group>"; };
+		DBF6060625DEE4E800936ABC /* vera_psg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = vera_psg.c; path = ../../vera_psg.c; sourceTree = "<group>"; };
+		DBF6060725DEE4E800936ABC /* joystick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = joystick.h; path = ../../joystick.h; sourceTree = "<group>"; };
+		DBF6060825DEE4E800936ABC /* vera_spi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vera_spi.h; path = ../../vera_spi.h; sourceTree = "<group>"; };
+		DBF6060925DEE4E800936ABC /* keyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = keyboard.h; path = ../../keyboard.h; sourceTree = "<group>"; };
+		DBF6060A25DEE4E800936ABC /* keyboard.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = keyboard.c; path = ../../keyboard.c; sourceTree = "<group>"; };
+		DBF6060B25DEE4E800936ABC /* joystick.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = joystick.c; path = ../../joystick.c; sourceTree = "<group>"; };
+		DBF6060C25DEE4E800936ABC /* via.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = via.c; path = ../../via.c; sourceTree = "<group>"; };
+		DBF6060E25DEE4E800936ABC /* 65c02.opcodes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 65c02.opcodes; sourceTree = "<group>"; };
+		DBF6060F25DEE4E800936ABC /* 65c02.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = 65c02.h; sourceTree = "<group>"; };
+		DBF6061025DEE4E800936ABC /* fake6502.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fake6502.c; sourceTree = "<group>"; };
+		DBF6061225DEE4E800936ABC /* .editorconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .editorconfig; sourceTree = "<group>"; };
+		DBF6061325DEE4E800936ABC /* tables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tables.h; sourceTree = "<group>"; };
+		DBF6061425DEE4E800936ABC /* instructions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = instructions.h; sourceTree = "<group>"; };
+		DBF6061525DEE4E800936ABC /* modes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = modes.h; sourceTree = "<group>"; };
+		DBF6061625DEE4E800936ABC /* mnemonics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mnemonics.h; sourceTree = "<group>"; };
+		DBF6061725DEE4E800936ABC /* 6502.opcodes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 6502.opcodes; sourceTree = "<group>"; };
+		DBF6061A25DEE4E800936ABC /* fake6502.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fake6502.h; sourceTree = "<group>"; };
+		DBF6061B25DEE4E800936ABC /* support.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = support.h; sourceTree = "<group>"; };
+		DBF6061C25DEE4E800936ABC /* rendertext.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = rendertext.c; path = ../../rendertext.c; sourceTree = "<group>"; };
+		DBF6061D25DEE4E800936ABC /* utf8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utf8.h; path = ../../utf8.h; sourceTree = "<group>"; };
+		DBF6061E25DEE4E800936ABC /* audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = audio.h; path = ../../audio.h; sourceTree = "<group>"; };
+		DBF6062025DEE4E800936ABC /* utf8_encode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utf8_encode.h; path = ../../utf8_encode.h; sourceTree = "<group>"; };
+		DBF6062125DEE4E800936ABC /* glue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = glue.h; path = ../../glue.h; sourceTree = "<group>"; };
+		DBF6062225DEE4E800936ABC /* vera_pcm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = vera_pcm.c; path = ../../vera_pcm.c; sourceTree = "<group>"; };
+		DBF6062325DEE4E800936ABC /* audio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = audio.c; path = ../../audio.c; sourceTree = "<group>"; };
+		DBF6062425DEE4E800936ABC /* via.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = via.h; path = ../../via.h; sourceTree = "<group>"; };
+		DBF6062725DEE4E800936ABC /* gif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gif.h; sourceTree = "<group>"; };
+		DBF6062A25DEE4E900936ABC /* ym2151.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ym2151.c; sourceTree = "<group>"; };
+		DBF6062B25DEE4E900936ABC /* ym2151.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ym2151.h; sourceTree = "<group>"; };
+		DBF6062C25DEE4E900936ABC /* disasm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = disasm.c; path = ../../disasm.c; sourceTree = "<group>"; };
+		DBF6062D25DEE4E900936ABC /* rendertext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rendertext.h; path = ../../rendertext.h; sourceTree = "<group>"; };
+		DBF6062E25DEE4E900936ABC /* debugger.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = debugger.c; path = ../../debugger.c; sourceTree = "<group>"; };
+		DBF6062F25DEE4E900936ABC /* rom_symbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rom_symbols.h; path = ../../rom_symbols.h; sourceTree = "<group>"; };
+		DBF6063025DEE4E900936ABC /* video.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = video.c; path = ../../video.c; sourceTree = "<group>"; };
+		DBF6063225DEE4E900936ABC /* platform-ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "platform-ios.h"; path = "../../platform-ios.h"; sourceTree = "<group>"; };
+		DBF6063325DEE4E900936ABC /* spi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = spi.h; path = ../../spi.h; sourceTree = "<group>"; };
+		DBF6063425DEE4E900936ABC /* symbolize.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = symbolize.sh; path = ../../symbolize.sh; sourceTree = "<group>"; };
+		DBF6063525DEE4E900936ABC /* rom_symbols.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = rom_symbols.sh; path = ../../rom_symbols.sh; sourceTree = "<group>"; };
+		DBF6063725DEE4E900936ABC /* memory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = memory.h; path = ../../memory.h; sourceTree = "<group>"; };
+		DBF6063925DEE4E900936ABC /* platform-audio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "platform-audio.c"; path = "../../platform-audio.c"; sourceTree = "<group>"; };
+		DBF6063A25DEE4E900936ABC /* icon.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = icon.c; path = ../../icon.c; sourceTree = "<group>"; };
+		DBF6063B25DEE4E900936ABC /* vera_psg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vera_psg.h; path = ../../vera_psg.h; sourceTree = "<group>"; };
+		DBF6063D25DEE4E900936ABC /* platform-joystick.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "platform-joystick.c"; path = "../../platform-joystick.c"; sourceTree = "<group>"; };
+		DBF6063F25DEE4E900936ABC /* loadsave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = loadsave.h; path = ../../loadsave.h; sourceTree = "<group>"; };
+		DBF6064025DEE4E900936ABC /* vera_pcm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vera_pcm.h; path = ../../vera_pcm.h; sourceTree = "<group>"; };
+		DBF6064125DEE4E900936ABC /* icon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = icon.h; path = ../../icon.h; sourceTree = "<group>"; };
+		DBF6064225DEE4E900936ABC /* sdcard.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sdcard.c; path = ../../sdcard.c; sourceTree = "<group>"; };
+		DBF6064325DEE4E900936ABC /* ps2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ps2.h; path = ../../ps2.h; sourceTree = "<group>"; };
+		DBF6064425DEE4E900936ABC /* disasm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = disasm.h; path = ../../disasm.h; sourceTree = "<group>"; };
+		DBF6064525DEE4E900936ABC /* spi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = spi.c; path = ../../spi.c; sourceTree = "<group>"; };
+		DBF6064625DEE4E900936ABC /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = main.c; path = ../../main.c; sourceTree = "<group>"; };
+		DBF6064725DEE4E900936ABC /* video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = video.h; path = ../../video.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DBF6054825DECF7500936ABC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DBF6054225DECF7500936ABC = {
+			isa = PBXGroup;
+			children = (
+				DBF6054D25DECF7500936ABC /* x16-ios */,
+				DBF6054C25DECF7500936ABC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DBF6054C25DECF7500936ABC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DBF6054B25DECF7500936ABC /* x16-ios.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DBF6054D25DECF7500936ABC /* x16-ios */ = {
+			isa = PBXGroup;
+			children = (
+				DBF605FD25DEE4C400936ABC /* emulator */,
+				DBF6056925DECFF500936ABC /* assets */,
+				DBF6056A25DED00A00936ABC /* app */,
+				DBF6056025DECF7500936ABC /* main.m */,
+			);
+			path = "x16-ios";
+			sourceTree = "<group>";
+		};
+		DBF6056925DECFF500936ABC /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				DBF6055725DECF7500936ABC /* Main.storyboard */,
+				DBF6055A25DECF7500936ABC /* Assets.xcassets */,
+				DBF6055C25DECF7500936ABC /* LaunchScreen.storyboard */,
+				DBF6055F25DECF7500936ABC /* Info.plist */,
+			);
+			name = assets;
+			sourceTree = "<group>";
+		};
+		DBF6056A25DED00A00936ABC /* app */ = {
+			isa = PBXGroup;
+			children = (
+				DBF605F925DEE31900936ABC /* Platform.m */,
+				DBF6055425DECF7500936ABC /* ViewController.h */,
+				DBF6055525DECF7500936ABC /* ViewController.m */,
+				DBF6055125DECF7500936ABC /* SceneDelegate.h */,
+				DBF6055225DECF7500936ABC /* SceneDelegate.m */,
+				DBF6054E25DECF7500936ABC /* AppDelegate.h */,
+				DBF6054F25DECF7500936ABC /* AppDelegate.m */,
+			);
+			name = app;
+			sourceTree = "<group>";
+		};
+		DBF605FD25DEE4C400936ABC /* emulator */ = {
+			isa = PBXGroup;
+			children = (
+				DBF6060D25DEE4E800936ABC /* cpu */,
+				DBF6062525DEE4E800936ABC /* extern */,
+				DBF6062325DEE4E800936ABC /* audio.c */,
+				DBF6061E25DEE4E800936ABC /* audio.h */,
+				DBF6062E25DEE4E900936ABC /* debugger.c */,
+				DBF6060325DEE4E800936ABC /* debugger.h */,
+				DBF6062C25DEE4E900936ABC /* disasm.c */,
+				DBF6064425DEE4E900936ABC /* disasm.h */,
+				DBF6062125DEE4E800936ABC /* glue.h */,
+				DBF6063A25DEE4E900936ABC /* icon.c */,
+				DBF6064125DEE4E900936ABC /* icon.h */,
+				DBF6060B25DEE4E800936ABC /* joystick.c */,
+				DBF6060725DEE4E800936ABC /* joystick.h */,
+				DBF6060A25DEE4E800936ABC /* keyboard.c */,
+				DBF6060925DEE4E800936ABC /* keyboard.h */,
+				DBF6060025DEE4E800936ABC /* loadsave.c */,
+				DBF6063F25DEE4E900936ABC /* loadsave.h */,
+				DBF6064625DEE4E900936ABC /* main.c */,
+				DBF6060425DEE4E800936ABC /* memory.c */,
+				DBF6063725DEE4E900936ABC /* memory.h */,
+				DBF6063925DEE4E900936ABC /* platform-audio.c */,
+				DBF6063225DEE4E900936ABC /* platform-ios.h */,
+				DBF6063D25DEE4E900936ABC /* platform-joystick.c */,
+				DBF6060125DEE4E800936ABC /* ps2.c */,
+				DBF6064325DEE4E900936ABC /* ps2.h */,
+				DBF6061C25DEE4E800936ABC /* rendertext.c */,
+				DBF6062D25DEE4E900936ABC /* rendertext.h */,
+				DBF6062F25DEE4E900936ABC /* rom_symbols.h */,
+				DBF6063525DEE4E900936ABC /* rom_symbols.sh */,
+				DBF6064225DEE4E900936ABC /* sdcard.c */,
+				DBF605FE25DEE4E800936ABC /* sdcard.h */,
+				DBF6064525DEE4E900936ABC /* spi.c */,
+				DBF6063325DEE4E900936ABC /* spi.h */,
+				DBF6063425DEE4E900936ABC /* symbolize.sh */,
+				DBF6062025DEE4E800936ABC /* utf8_encode.h */,
+				DBF6061D25DEE4E800936ABC /* utf8.h */,
+				DBF6062225DEE4E800936ABC /* vera_pcm.c */,
+				DBF6064025DEE4E900936ABC /* vera_pcm.h */,
+				DBF6060625DEE4E800936ABC /* vera_psg.c */,
+				DBF6063B25DEE4E900936ABC /* vera_psg.h */,
+				DBF6060225DEE4E800936ABC /* vera_spi.c */,
+				DBF6060825DEE4E800936ABC /* vera_spi.h */,
+				DBF605FF25DEE4E800936ABC /* version.h */,
+				DBF6060C25DEE4E800936ABC /* via.c */,
+				DBF6062425DEE4E800936ABC /* via.h */,
+				DBF6063025DEE4E900936ABC /* video.c */,
+				DBF6064725DEE4E900936ABC /* video.h */,
+			);
+			name = emulator;
+			sourceTree = "<group>";
+		};
+		DBF6060D25DEE4E800936ABC /* cpu */ = {
+			isa = PBXGroup;
+			children = (
+				DBF6061225DEE4E800936ABC /* .editorconfig */,
+				DBF6060F25DEE4E800936ABC /* 65c02.h */,
+				DBF6060E25DEE4E800936ABC /* 65c02.opcodes */,
+				DBF6061725DEE4E800936ABC /* 6502.opcodes */,
+				DBF6061025DEE4E800936ABC /* fake6502.c */,
+				DBF6061A25DEE4E800936ABC /* fake6502.h */,
+				DBF6061425DEE4E800936ABC /* instructions.h */,
+				DBF6061625DEE4E800936ABC /* mnemonics.h */,
+				DBF6061525DEE4E800936ABC /* modes.h */,
+				DBF6061B25DEE4E800936ABC /* support.h */,
+				DBF6061325DEE4E800936ABC /* tables.h */,
+			);
+			name = cpu;
+			path = ../../cpu;
+			sourceTree = "<group>";
+		};
+		DBF6062525DEE4E800936ABC /* extern */ = {
+			isa = PBXGroup;
+			children = (
+				DBF6062625DEE4E800936ABC /* include */,
+				DBF6062925DEE4E800936ABC /* src */,
+			);
+			name = extern;
+			path = ../../extern;
+			sourceTree = "<group>";
+		};
+		DBF6062625DEE4E800936ABC /* include */ = {
+			isa = PBXGroup;
+			children = (
+				DBF6062725DEE4E800936ABC /* gif.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		DBF6062925DEE4E800936ABC /* src */ = {
+			isa = PBXGroup;
+			children = (
+				DBF6062A25DEE4E900936ABC /* ym2151.c */,
+				DBF6062B25DEE4E900936ABC /* ym2151.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DBF6054A25DECF7500936ABC /* x16-ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DBF6056425DECF7500936ABC /* Build configuration list for PBXNativeTarget "x16-ios" */;
+			buildPhases = (
+				DBF6054725DECF7500936ABC /* Sources */,
+				DBF6054825DECF7500936ABC /* Frameworks */,
+				DBF6054925DECF7500936ABC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "x16-ios";
+			productName = "x16-ios";
+			productReference = DBF6054B25DECF7500936ABC /* x16-ios.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DBF6054325DECF7500936ABC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1230;
+				TargetAttributes = {
+					DBF6054A25DECF7500936ABC = {
+						CreatedOnToolsVersion = 12.3;
+					};
+				};
+			};
+			buildConfigurationList = DBF6054625DECF7500936ABC /* Build configuration list for PBXProject "x16-ios" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DBF6054225DECF7500936ABC;
+			productRefGroup = DBF6054C25DECF7500936ABC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DBF6054A25DECF7500936ABC /* x16-ios */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DBF6054925DECF7500936ABC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBF6065225DEE4E900936ABC /* 65c02.opcodes in Resources */,
+				DBF6066425DEE4E900936ABC /* rom_symbols.sh in Resources */,
+				DBF6065525DEE4E900936ABC /* .editorconfig in Resources */,
+				DBF6066325DEE4E900936ABC /* symbolize.sh in Resources */,
+				DBF6065625DEE4E900936ABC /* 6502.opcodes in Resources */,
+				DBF6055E25DECF7500936ABC /* LaunchScreen.storyboard in Resources */,
+				DBF6055B25DECF7500936ABC /* Assets.xcassets in Resources */,
+				DBF6055925DECF7500936ABC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DBF6054725DECF7500936ABC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBF6065125DEE4E900936ABC /* via.c in Sources */,
+				DBF6065F25DEE4E900936ABC /* disasm.c in Sources */,
+				DBF6066025DEE4E900936ABC /* debugger.c in Sources */,
+				DBF6065E25DEE4E900936ABC /* ym2151.c in Sources */,
+				DBF6065925DEE4E900936ABC /* rendertext.c in Sources */,
+				DBF6066C25DEE4E900936ABC /* sdcard.c in Sources */,
+				DBF6064A25DEE4E900936ABC /* ps2.c in Sources */,
+				DBF6065325DEE4E900936ABC /* fake6502.c in Sources */,
+				DBF6055625DECF7500936ABC /* ViewController.m in Sources */,
+				DBF6055025DECF7500936ABC /* AppDelegate.m in Sources */,
+				DBF6066A25DEE4E900936ABC /* platform-joystick.c in Sources */,
+				DBF605FA25DEE31900936ABC /* Platform.m in Sources */,
+				DBF6064C25DEE4E900936ABC /* memory.c in Sources */,
+				DBF6064B25DEE4E900936ABC /* vera_spi.c in Sources */,
+				DBF6056125DECF7500936ABC /* main.m in Sources */,
+				DBF6066D25DEE4E900936ABC /* spi.c in Sources */,
+				DBF6064F25DEE4E900936ABC /* keyboard.c in Sources */,
+				DBF6066125DEE4E900936ABC /* video.c in Sources */,
+				DBF6066E25DEE4E900936ABC /* main.c in Sources */,
+				DBF6064925DEE4E900936ABC /* loadsave.c in Sources */,
+				DBF6066825DEE4E900936ABC /* icon.c in Sources */,
+				DBF6064E25DEE4E900936ABC /* vera_psg.c in Sources */,
+				DBF6066725DEE4E900936ABC /* platform-audio.c in Sources */,
+				DBF6065B25DEE4E900936ABC /* vera_pcm.c in Sources */,
+				DBF6055325DECF7500936ABC /* SceneDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DBF6055725DECF7500936ABC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DBF6055825DECF7500936ABC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DBF6055C25DECF7500936ABC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DBF6055D25DECF7500936ABC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DBF6056225DECF7500936ABC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		DBF6056325DECF7500936ABC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DBF6056525DECF7500936ABC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "x16-ios/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rogerboesch.x16-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DBF6056625DECF7500936ABC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "x16-ios/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rogerboesch.x16-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DBF6054625DECF7500936ABC /* Build configuration list for PBXProject "x16-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBF6056225DECF7500936ABC /* Debug */,
+				DBF6056325DECF7500936ABC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DBF6056425DECF7500936ABC /* Build configuration list for PBXNativeTarget "x16-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBF6056525DECF7500936ABC /* Debug */,
+				DBF6056625DECF7500936ABC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DBF6054325DECF7500936ABC /* Project object */;
+}

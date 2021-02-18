@@ -10,9 +10,9 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
-#include <SDL.h>
 #include "glue.h"
 #include "via.h"
+#include "platform-ios.h"
 
 #define JOY_LATCH_MASK 0x08
 #define JOY_DATA1_MASK 0x10
@@ -26,9 +26,9 @@ extern bool joystick_latch, joystick_clock;
 extern bool joystick1_data, joystick2_data;
 
 
-bool joystick_init(); //initialize SDL controllers
+bool joystick_init(void); //initialize SDL controllers
 
-void joystick_step(); //do next step for handling joysticks
+void joystick_step(void); //do next step for handling joysticks
 
 bool handle_latch(bool latch, bool clock);  //used internally to check when to
 											//  write to VIA

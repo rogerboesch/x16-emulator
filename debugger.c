@@ -14,7 +14,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <inttypes.h>
-#include <SDL.h>
 #include "glue.h"
 #include "disasm.h"
 #include "memory.h"
@@ -139,7 +138,9 @@ SDL_Renderer *dbgRenderer; 										// Renderer passed in.
 // *******************************************************************************************
 
 int  DEBUGGetCurrentStatus(void) {
+    // TODO: Implement
 
+    /*
 	SDL_Event event;
 	if (currentPC < 0) currentPC = pc;							// Initialise current PC displayed.
 
@@ -186,6 +187,7 @@ int  DEBUGGetCurrentStatus(void) {
 		return 1;
 	}
 
+     */
 	return 0;													// Run wild, run free.
 }
 
@@ -235,7 +237,10 @@ void DEBUGBreakToDebugger(void) {
 // *******************************************************************************************
 
 static void DEBUGHandleKeyEvent(SDL_Keycode key,int isShift) {
-	int opcode;
+    // TODO: Implement
+
+    /*
+    int opcode;
 
 	switch(key) {
 
@@ -303,12 +308,15 @@ static void DEBUGHandleKeyEvent(SDL_Keycode key,int isShift) {
 			}
 			break;
 	}
-
+ */
 }
 
 char kNUM_KEYPAD_CHARS[10] = {'1','2','3','4','5','6','7','8','9','0'};
 
 static bool DEBUGBuildCmdLine(SDL_Keycode key) {
+    // TODO: Implement
+
+    /*
 	// right now, let's have a rudimentary input: only backspace to delete last char
 	// later, I want a real input line with delete, backspace, left and right cursor
 	// devs like their comfort ;)
@@ -337,6 +345,10 @@ static bool DEBUGBuildCmdLine(SDL_Keycode key) {
 		cmdLine[currentLineLen]= 0;
 	}
 	return (key == SDLK_RETURN) || (key == SDLK_KP_ENTER);
+     
+     */
+    
+    return false;
 }
 
 static void DEBUGExecCmd() {
@@ -462,6 +474,9 @@ static void DEBUGExecCmd() {
 // *******************************************************************************************
 
 void DEBUGRenderDisplay(int width, int height) {
+    // TODO: Implement
+
+    /*
 	if (showFullDisplay) return;								// Not rendering debug.
 
 	SDL_Rect rc;
@@ -483,6 +498,7 @@ void DEBUGRenderDisplay(int width, int height) {
 	DEBUGRenderStack(20);
 
 	DEBUGRenderCmdLine(xPos, rc.w, height);
+     */
 }
 
 // *******************************************************************************************
@@ -492,6 +508,9 @@ void DEBUGRenderDisplay(int width, int height) {
 // *******************************************************************************************
 
 static void DEBUGRenderCmdLine(int x, int width, int height) {
+    // TODO: Implement
+
+    /*
 	char buffer[sizeof(cmdLine)+1];
 
 	SDL_SetRenderDrawColor(dbgRenderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
@@ -499,6 +518,7 @@ static void DEBUGRenderCmdLine(int x, int width, int height) {
 
 	sprintf(buffer, ">%s", cmdLine);
 	DEBUGString(dbgRenderer, 0, DBG_HEIGHT-1, buffer, col_cmdLine);
+     */
 }
 
 // *******************************************************************************************
