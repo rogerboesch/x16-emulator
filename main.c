@@ -471,16 +471,21 @@ usage_keymap()
 extern int platform_argc;
 extern char** platform_argv;
 
-int platform_main()
+int platform_main(bool record)
 {
     int argc = platform_argc;
     char** argv = platform_argv;
     
+    if (record) {
+        record_gif = RECORD_GIF_PAUSED;
+        gif_path = platform_get_gif_path();
+    }
+
 #else
 int main(int argc, char **argv)
 {
 #endif
-	char *rom_filename = "rom.bin";
+    char *rom_filename = "rom.bin";
 	char rom_path_data[PATH_MAX];
 
 	char *rom_path = rom_path_data;
@@ -804,6 +809,7 @@ int main(int argc, char **argv)
 		printf("Cannot open %s!\n", rom_path);
 		exit(1);
 	}
+    
 	size_t rom_size = SDL_RWread(f, ROM, ROM_SIZE, 1);
 	(void)rom_size;
 	SDL_RWclose(f);

@@ -10,7 +10,7 @@
 int
 ps2_scancode_from_SDL_Scancode(SDL_Scancode scancode)
 {
-    // TODO: Implement
+    // TODO: Implement scancode conversion
 
     /*
 	switch (scancode) {

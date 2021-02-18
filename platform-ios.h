@@ -6,6 +6,17 @@
 
 #ifdef TARGET_OS_IPHONE
 
+#include <stdio.h>
+
+char* platform_get_base_path(void);
+char* platform_get_gif_path(void);
+int platform_get_ticks(void);
+
+FILE* platform_file_open(char* path, char* mode);
+size_t platform_file_read(FILE* fp, void* buf, size_t size, size_t mnemb);
+
+void platform_render_buffer(uint8_t* framebuffer);
+
 // Temporary, replace later
 
 #define SDL_Keycode uint8_t
@@ -17,10 +28,10 @@
 #define SDL_Window void
 
 #define SDL_RWops FILE
-#define SDL_RWread fread
+#define SDL_RWread platform_file_read
 #define SDL_RWseek fseek
 #define SDL_RWwrite fwrite
-#define SDL_RWFromFile fopen
+#define SDL_RWFromFile platform_file_open
 #define SDL_RWclose fclose
 #define SDL_Renderer void
 #define SDL_GameController void
@@ -28,9 +39,6 @@
 #define SDL_GetTicks void
 #define SDL_ReadU8
 #define SDL_WriteU8
-
-char* platform_get_base_path(void);
-int platform_get_ticks(void);
 
 #endif
 #endif /* platform_ios_h */

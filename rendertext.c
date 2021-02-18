@@ -140,7 +140,7 @@ static unsigned char fontdata[] = {
 // *******************************************************************************************
 
 void DEBUGInitChars(SDL_Renderer *renderer) {
-    // TODO: Implement
+    // TODO: Implement debug text
 /*
     uint16_t textureData[TEXTURE_WIDTH * TEXTURE_HEIGHT];
 	memset(textureData, 0, sizeof textureData);
@@ -172,7 +172,7 @@ void DEBUGInitChars(SDL_Renderer *renderer) {
 // *******************************************************************************************
 
 void DEBUGWrite(SDL_Renderer *renderer, int x, int y, int ch, SDL_Color colour) {
-    // TODO: Implement
+    // TODO: Implement debugwrite
 
     /*
 	if (!textureInitialized) {

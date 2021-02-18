@@ -96,7 +96,7 @@ audio_init(const char *dev_name, int num_audio_buffers)
     
     // Init YM2151 emulation. 4 MHz clock
     YM_Create(4000000);
-    YM_init(0, 60); // TODO: Insert frequence here
+    YM_init(SAMPLERATE, 60); // TODO: Insert frequence here
 
     // Start playback
     //SDL_PauseAudioDevice(audio_dev, 0);

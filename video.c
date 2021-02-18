@@ -67,6 +67,9 @@
 #define LAYER_PIXELS_PER_ITERATION 8
 
 
+long record_gif_frames = 0;
+long record_max_gif_frames = 100;
+
 static SDL_Window *window;
 static SDL_Renderer *renderer;
 static SDL_Texture *sdlTexture;
@@ -170,54 +173,34 @@ video_reset()
 bool
 video_init(int window_scale, char *quality)
 {
-    // TODO: Implement
-    
+    video_reset();
+
+    if (record_gif != RECORD_GIF_DISABLED) {
+        if (!strcmp(gif_path+strlen(gif_path)-5, ",wait")) {
+            // wait for POKE
+            record_gif = RECORD_GIF_PAUSED;
+            // move the string terminator to remove the ",wait"
+            gif_path[strlen(gif_path)-5] = 0;
+        } else {
+            // start now
+            record_gif = RECORD_GIF_ACTIVE;
+        }
+        if (!GifBegin(&gif_writer, gif_path, SCREEN_WIDTH, SCREEN_HEIGHT, 1, 8, false)) {
+            record_gif = RECORD_GIF_DISABLED;
+        }
+    }
+
+    if (debugger_enabled) {
+        DEBUGInitUI(renderer);
+    }
+
     /*
-	uint32_t window_flags = SDL_WINDOW_ALLOW_HIGHDPI;
-
-#ifdef __EMSCRIPTEN__
-	// Setting this flag would render the web canvas outside of its bounds on high dpi screens
-	window_flags &= ~SDL_WINDOW_ALLOW_HIGHDPI;
-#endif
-
-	video_reset();
-
-	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, quality);
-	SDL_CreateWindowAndRenderer(SCREEN_WIDTH * window_scale, SCREEN_HEIGHT * window_scale, window_flags, &window, &renderer);
-#ifndef __MORPHOS__
-	SDL_SetWindowResizable(window, true);
-#endif
-	SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
-
 	sdlTexture = SDL_CreateTexture(renderer,
 									SDL_PIXELFORMAT_RGB888,
 									SDL_TEXTUREACCESS_STREAMING,
 									SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	SDL_SetWindowTitle(window, "Commander X16");
-	SDL_SetWindowIcon(window, CommanderX16Icon());
-
-	SDL_ShowCursor(SDL_DISABLE);
-
-	if (record_gif != RECORD_GIF_DISABLED) {
-		if (!strcmp(gif_path+strlen(gif_path)-5, ",wait")) {
-			// wait for POKE
-			record_gif = RECORD_GIF_PAUSED;
-			// move the string terminator to remove the ",wait"
-			gif_path[strlen(gif_path)-5] = 0;
-		} else {
-			// start now
-			record_gif = RECORD_GIF_ACTIVE;
-		}
-		if (!GifBegin(&gif_writer, gif_path, SCREEN_WIDTH, SCREEN_HEIGHT, 1, 8, false)) {
-			record_gif = RECORD_GIF_DISABLED;
-		}
-	}
-
-	if (debugger_enabled) {
-		DEBUGInitUI(renderer);
-	}
-
      */
     
 	return true;
@@ -1073,10 +1056,6 @@ video_update()
 		}
 	}
 
-    // TODO: Implement
-
-	//SDL_UpdateTexture(sdlTexture, NULL, framebuffer, SCREEN_WIDTH * 4);
-
 	if (record_gif > RECORD_GIF_PAUSED) {
 		if(!GifWriteFrame(&gif_writer, framebuffer, SCREEN_WIDTH, SCREEN_HEIGHT, 2, 8, false)) {
 			// if that failed, stop recording
@@ -1087,19 +1066,25 @@ video_update()
 		if (record_gif == RECORD_GIF_SINGLE) { // if single-shot stop recording
 			record_gif = RECORD_GIF_PAUSED;  // need to close in video_end()
 		}
+        
+        record_gif_frames++;
 	}
 
-	//SDL_RenderClear(renderer);
-    //SDL_RenderCopy(renderer, sdlTexture, NULL, NULL);
+    if (record_gif != RECORD_GIF_DISABLED && record_gif_frames > record_max_gif_frames) {
+        GifEnd(&gif_writer);
+        record_gif = RECORD_GIF_DISABLED;
+    }
 
-	if (debugger_enabled && showDebugOnRender != 0) {
+    platform_render_buffer(&framebuffer[0]);
+
+    if (debugger_enabled && showDebugOnRender != 0) {
 		DEBUGRenderDisplay(SCREEN_WIDTH, SCREEN_HEIGHT);
-        //SDL_RenderPresent(renderer);
-		return true;
+
+        return true;
 	}
 
-    //SDL_RenderPresent(renderer);
-
+    // TODO: Implement event handling
+    
     /*
 	SDL_Event event;
 	while (SDL_PollEvent(&event)) {
