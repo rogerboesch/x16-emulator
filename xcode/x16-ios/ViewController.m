@@ -25,14 +25,36 @@ ViewController* INSTANCE_OF_VIEWCONTROLLER = NULL;
 
 - (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentsAtURLs:(NSArray<NSURL *> *)urls {
     if (urls.count > 0) {
-        self.cloudFilename = [[urls objectAtIndex:0] path];
-        NSLog(@"Clod file selecetd: %@", self.cloudFilename);
+        NSURL* originalURL = [urls objectAtIndex:0];
+
+        BOOL success = [originalURL startAccessingSecurityScopedResource];
+        NSFileCoordinator *fileCoordinator = [[NSFileCoordinator alloc] init];
+        NSError *error = nil;
+        [fileCoordinator coordinateReadingItemAtURL:originalURL options:NSFileCoordinatorReadingForUploading error:&error byAccessor:^(NSURL *newURL) {
+            // Read contant
+            NSData* data = [NSData dataWithContentsOfURL:originalURL];
+            if (data != nil) {
+                // Save to documents
+                NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
+                NSString* documentsDirectory = [paths objectAtIndex:0];
+                NSString* path = [NSString stringWithFormat:@"%@/TEMP", documentsDirectory];
+                [data writeToFile:path atomically:NO];
+
+                self.cloudFilename = path;
+            }
+            else {
+                self.cloudFilename = @"";
+            }
+            
+            [originalURL stopAccessingSecurityScopedResource];
+            
+            self.cloudPickerActive = NO;
+        }];
     }
     else {
         self.cloudFilename = @"";
+        self.cloudPickerActive = NO;
     }
-    
-    self.cloudPickerActive = NO;
 }
 
 - (void)loadFromCloud {
