@@ -10,10 +10,11 @@
 iOS Version
 --------
 This is a fork to work on the iOS version.
-Its's currently a quick and dirty implementation (work in progress)
+Its's currently a quick and dirty implementation (work in progress).
+
 iOS Version writen by Roger Boesch.
 
-Official version of Commander X16 emulator see [here](/README.md)
+Official version of Commander X16 emulator see [here](/)
 
 iOS Features
 --------
