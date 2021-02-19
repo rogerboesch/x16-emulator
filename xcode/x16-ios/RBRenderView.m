@@ -9,35 +9,6 @@ extern int platform_main(bool record);
 
 RBRenderView* INSTANCE_OF_RENDERVIEW = NULL;
 
-@implementation UIImage (Buffer)
-
-#pragma mark - Image handling
-
-+ (UIImage *)imageWithBuffer:(void *)buffer width:(int)width height:(int)height {
-    int length = width*height*4;
-    CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, buffer, length, NULL);
-    
-    int bitsPerComponent = 8;
-    int bitsPerPixel = 4 * bitsPerComponent;
-    int bytesPerRow = 4*width;
-    CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
-    CGBitmapInfo bitmapInfo = kCGImageAlphaNoneSkipFirst | kCGBitmapByteOrder32Little;
-    CGColorRenderingIntent renderingIntent = kCGRenderingIntentDefault;
-    
-    CGImageRef imageRef = CGImageCreate(width, height, bitsPerComponent, bitsPerPixel, bytesPerRow, colorSpaceRef, bitmapInfo, provider, NULL, NO, renderingIntent);
-    CGDataProviderRelease(provider);
-    
-    UIImage* myImage = [UIImage imageWithCGImage:imageRef];
-    
-    // CGDataProviderRelease(provider);
-    // CGColorSpaceRelease(colorSpaceRef);
-    // CGImageRelease(imageRef); // TODO: This results in a crash
-
-    return myImage;
-}
-
-@end
-
 @interface RBRenderView ()
 
 @property (nonatomic, retain) OSImageView* renderImageView;
@@ -54,9 +25,25 @@ RBRenderView* INSTANCE_OF_RENDERVIEW = NULL;
 
 #pragma mark - Emulator
 
-- (void)render:(unsigned char*)machine {    
-    UIImage *machineImage = [UIImage imageWithBuffer:machine width:SCREEN_WIDTH height:SCREEN_HEIGHT];
-    self.renderImageView.image = machineImage;
+- (void)render:(uint8_t*)buffer {
+    int length = SCREEN_WIDTH*SCREEN_HEIGHT*4;
+    CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, buffer, length, NULL);
+    
+    int bitsPerComponent = 8;
+    int bitsPerPixel = 4*bitsPerComponent;
+    int bytesPerRow = 4*SCREEN_WIDTH;
+    CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
+    CGBitmapInfo bitmapInfo = kCGImageAlphaNoneSkipFirst | kCGBitmapByteOrder32Little;
+    CGColorRenderingIntent renderingIntent = kCGRenderingIntentDefault;
+    
+    CGImageRef imageRef = CGImageCreate(SCREEN_WIDTH, SCREEN_HEIGHT, bitsPerComponent, bitsPerPixel, bytesPerRow, colorSpaceRef, bitmapInfo, provider, NULL, NO, renderingIntent);
+    CGDataProviderRelease(provider);
+    
+    UIImage* myImage = [UIImage imageWithCGImage:imageRef];
+    self.renderImageView.image = myImage;
+
+    CGImageRelease(imageRef); 
+    CGColorSpaceRelease(colorSpaceRef);
 }
 
 - (void)start {

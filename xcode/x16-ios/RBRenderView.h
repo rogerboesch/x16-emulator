@@ -20,8 +20,6 @@
 - (void)reset;
 - (void)nextFrame;
 
-- (void)render:(unsigned char *)machine;
-
 + (RBRenderView *)shared;
 
 @end

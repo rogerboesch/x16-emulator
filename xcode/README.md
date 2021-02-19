@@ -18,6 +18,8 @@ iOS Features
 * SD card support
 * Copy/paste support
 * iCloud access
+* Debugger support
+
 
 #### Screenshot
 ![](screenshot.png)
