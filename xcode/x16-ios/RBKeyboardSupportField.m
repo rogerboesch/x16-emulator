@@ -44,12 +44,17 @@
         asciiCode = [string characterAtIndex:0];
     }
 
-    [self pressKey:asciiCode keyCode:RBVK_Unknown ctrlKeyPressed:false];
+    if (asciiCode == RBVK_BackSpace) {
+        [self pressKey:0 keyCode:RBVK_BackSpace ctrlKeyPressed:false];
+    }
+    else {
+        [self pressKey:asciiCode keyCode:RBVK_Unknown ctrlKeyPressed:false];
+    }
 
     if (asciiCode == RBVK_BackSpace && textField.text.length < 2) {
         return NO;
     }
-    
+
     return YES;
 }
 
