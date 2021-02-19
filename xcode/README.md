@@ -12,7 +12,7 @@ iOS Version
 *This is a fork to work on the iOS version. Its's currently a quick and dirty implementation (work in progress).*
 
 * iOS Version is writen by Roger Boesch.
-* Official version of Commander X16 emulator see [here](..)
+* Official version of Commander X16 emulator see [here](/x16-emulator)
 
 
 iOS Features
