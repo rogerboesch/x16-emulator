@@ -9,12 +9,13 @@
 
 iOS Version
 --------
-This is a fork to work on the iOS version.
-
-Its's currently a quick and dirty implementation (work in progress)
+*This is a fork to work on the iOS version. Its's currently a quick and dirty implementation (work in progress)*
 
 iOS Version writen by Roger Boesch. More infos [here](xcode)
 
+
+Commander x16 Emulator
+--------
 
 This is an emulator for the Commander X16 computer system. It only depends on SDL2 and should compile on all modern operating systems.
 
