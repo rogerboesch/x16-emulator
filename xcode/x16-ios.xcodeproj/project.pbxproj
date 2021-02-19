@@ -45,6 +45,7 @@
 		DBF6068C25DEFAF600936ABC /* rom.bin in Resources */ = {isa = PBXBuildFile; fileRef = DBF6068B25DEFAF600936ABC /* rom.bin */; };
 		DBF6069225DF9E4200936ABC /* platform_keyboard.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6069125DF9E4200936ABC /* platform_keyboard.c */; };
 		DBF6069725DFA73100936ABC /* RBGhost.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF6069625DFA73100936ABC /* RBGhost.m */; };
+		DBF6069F25DFAE5100936ABC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DBF6069E25DFAE5100936ABC /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,6 +131,7 @@
 		DBF6069125DF9E4200936ABC /* platform_keyboard.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = platform_keyboard.c; path = ../../platform_keyboard.c; sourceTree = "<group>"; };
 		DBF6069525DFA73100936ABC /* RBGhost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBGhost.h; sourceTree = "<group>"; };
 		DBF6069625DFA73100936ABC /* RBGhost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBGhost.m; sourceTree = "<group>"; };
+		DBF6069E25DFAE5100936ABC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 		DBF6054225DECF7500936ABC = {
 			isa = PBXGroup;
 			children = (
+				DBF6069E25DFAE5100936ABC /* README.md */,
 				DBF6068B25DEFAF600936ABC /* rom.bin */,
 				DBF6054D25DECF7500936ABC /* x16-ios */,
 				DBF6054C25DECF7500936ABC /* Products */,
@@ -363,6 +366,7 @@
 			files = (
 				DBF6065225DEE4E900936ABC /* 65c02.opcodes in Resources */,
 				DBF6066425DEE4E900936ABC /* rom_symbols.sh in Resources */,
+				DBF6069F25DFAE5100936ABC /* README.md in Resources */,
 				DBF6065525DEE4E900936ABC /* .editorconfig in Resources */,
 				DBF6068C25DEFAF600936ABC /* rom.bin in Resources */,
 				DBF6066325DEE4E900936ABC /* symbolize.sh in Resources */,

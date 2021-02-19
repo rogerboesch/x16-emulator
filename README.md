@@ -7,6 +7,13 @@
 [![License: BSD-Clause](https://img.shields.io/github/license/commanderx16/x16-emulator)](./LICENSE)
 [![Contributors](https://img.shields.io/github/contributors/commanderx16/x16-emulator.svg)](https://github.com/commanderx16/x16-emulator/graphs/contributors)
 
+iOS Version
+--------
+This is a fork to work on the iOS version.
+Its's currently a quick and dirty implementation (work in progress)
+iOS Version writen by Roger Boesch. More infos [here](xcode/README.md)
+
+
 This is an emulator for the Commander X16 computer system. It only depends on SDL2 and should compile on all modern operating systems.
 
 Features
