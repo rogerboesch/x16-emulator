@@ -11,13 +11,13 @@ iOS Features
 
 * Load and start with default rom
 * Support of virtual keyboard
+* iCloud access: Type *LOAD "@"* to open the iCloud Drive and load the file
 
 *Under development:*
 
 * Audio Support
 * SD card support
 * Copy/paste support
-* iCloud access
 * Debugger support
 
 
