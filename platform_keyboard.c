@@ -18,12 +18,8 @@ ps2_scancode_from_SDL_Scancode(RBVirtualKey scancode)
             return 0x66;
         case RBVK_Tab:
             return 0xd;
-        //case SDL_SCANCODE_CLEAR:
-        //    return 0;
         case RBVK_Return:
             return 0x5a;
-        //case SDL_SCANCODE_PAUSE:
-        //    return 0;
         case RBVK_Escape:
 #ifdef ESC_IS_BREAK
             return 0xff;
@@ -32,8 +28,8 @@ ps2_scancode_from_SDL_Scancode(RBVirtualKey scancode)
 #endif
         case RBVK_Space:
             return 0x29;
-//        case SDL_SCANCODE_APOSTROPHE: // TODO: Check later
-//            return 0x52;
+        case RBVK_Quote: // TODO: Check later
+            return 0x52;
         case RBVK_Comma:
             return 0x41;
         case RBVK_Minus:
@@ -180,12 +176,6 @@ ps2_scancode_from_SDL_Scancode(RBVirtualKey scancode)
             return 0x11;
         case RBVK_RAlt:
             return 0x11 | EXTENDED_FLAG;
-//        case SDL_SCANCODE_LGUI: // Windows/Command
-//            return 0x5b | EXTENDED_FLAG;
-//        case SDL_SCANCODE_NONUSBACKSLASH:
-//            return 0x61;
-//        case SDL_SCANCODE_KP_ENTER:
-//            return 0x5a | EXTENDED_FLAG;
         case RBVK_Numpad0:
             return 0x70;
         case RBVK_Numpad1:
@@ -206,16 +196,28 @@ ps2_scancode_from_SDL_Scancode(RBVirtualKey scancode)
             return 0x75;
         case RBVK_Numpad9:
             return 0x7d;
-//        case SDL_SCANCODE_KP_PERIOD:
-//            return 0x71;
-//        case SDL_SCANCODE_KP_PLUS:
-//            return 0x79;
-//        case SDL_SCANCODE_KP_MINUS:
-//            return 0x7b;
-//        case SDL_SCANCODE_KP_MULTIPLY:
-//            return 0x7c;
-//        case SDL_SCANCODE_KP_DIVIDE:
-//            return 0x4a | EXTENDED_FLAG;
+        case RBVK_Add:
+            return 0x79;
+        case RBVK_Multiply:
+            return 0x7c;
+        case RBVK_Divide:
+            return 0x4a | EXTENDED_FLAG;
+
+//      case SDL_SCANCODE_KP_PERIOD:
+//          return 0x71;
+//      case SDL_SCANCODE_KP_MINUS:
+//          return 0x7b;
+//      case SDL_SCANCODE_LGUI: // Windows/Command
+//          return 0x5b | EXTENDED_FLAG;
+//      case SDL_SCANCODE_NONUSBACKSLASH:
+//          return 0x61;
+//      case SDL_SCANCODE_KP_ENTER:
+//          return 0x5a | EXTENDED_FLAG;
+//      case SDL_SCANCODE_CLEAR:
+//          return 0;
+//      case SDL_SCANCODE_PAUSE:
+//          return 0;
+
         default:
             return 0;
     }

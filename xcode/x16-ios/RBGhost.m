@@ -16,14 +16,23 @@ NSOperationQueue* s_ghostQueue = NULL;
 @implementation RBGhost
 
 + (void)sendEvent:(RBEvent)evt {
-    if (evt.type == RBEVT_KeyPressed || evt.type == RBEVT_KeyReleased) {
-        // Test ascii characters
-        char ch = toupper(evt.ch);
+    if (evt.code == RBVK_Unknown) {
+        if (evt.type == RBEVT_KeyPressed || evt.type == RBEVT_KeyReleased) {
+            // Test ascii characters
+            char ch = toupper(evt.ch);
+            
+            if ((int)ch > 0) {
+                int keyCode = character_to_vk(ch);
+                evt.code = keyCode;
+                evt.ch = ch;
+                evt.shift = 0;
+                
+                int nonShiftCode = get_non_shift_key(ch);
+                if (nonShiftCode != RBVK_Unknown) {
+                    evt.code = nonShiftCode;
+                }
 
-        if ((int)ch > 0) {
-            int keyCode = character_to_vk(ch);
-            evt.code = keyCode;
-            evt.ch = ch;
+            }
         }
     }
     
@@ -32,6 +41,25 @@ NSOperationQueue* s_ghostQueue = NULL;
 }
 
 + (void)typeInCharacter:(char)ch ctrlPressed:(BOOL)ctrlPressed {
+    BOOL sendShiftKey = NO;
+    
+    if (is_shift_key_used(ch))
+        sendShiftKey = YES;
+
+    if (sendShiftKey) {
+        [s_ghostQueue addOperationWithBlock:^{
+            RBEvent evt;
+            evt.type = RBEVT_KeyPressed;
+            evt.code = RBVK_LShift;
+            evt.ch = 0;
+            evt.control = 0;
+            evt.shift = 1;
+            evt.alt = 0;
+
+            [RBGhost sendEvent:evt];
+        }];
+    }
+
     [s_ghostQueue addOperationWithBlock:^{
         RBEvent evt;
         evt.type = RBEVT_KeyPressed;
@@ -51,6 +79,20 @@ NSOperationQueue* s_ghostQueue = NULL;
         
         [RBGhost sendEvent:evt];
     }];
+
+    if (sendShiftKey) {
+        [s_ghostQueue addOperationWithBlock:^{
+            RBEvent evt;
+            evt.type = RBEVT_KeyReleased;
+            evt.code = RBVK_LShift;
+            evt.ch = 0;
+            evt.control = 0;
+            evt.shift = 1;
+            evt.alt = 0;
+
+            [RBGhost sendEvent:evt];
+        }];
+    }
 }
 
 + (void)typeInCode:(int)code ctrlPressed:(BOOL)ctrlPressed {

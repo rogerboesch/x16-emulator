@@ -192,5 +192,7 @@ typedef struct _RBEvent {
 } RBEvent;
 
 int character_to_vk(char ch);
+int is_shift_key_used(char ch);
+int get_non_shift_key(char ch);
 
 #endif

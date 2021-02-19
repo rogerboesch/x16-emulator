@@ -1,3 +1,4 @@
+#include <SDL.h>
 #include <stdio.h>
 #include <stdbool.h>
 #include "glue.h"
@@ -10,9 +11,6 @@
 int
 ps2_scancode_from_SDL_Scancode(SDL_Scancode scancode)
 {
-    // TODO: Implement scancode conversion
-
-    /*
 	switch (scancode) {
 		case SDL_SCANCODE_GRAVE:
 			return 0x0e;
@@ -221,9 +219,6 @@ ps2_scancode_from_SDL_Scancode(SDL_Scancode scancode)
 		default:
 			return 0;
 	}
-     
-     */
-    return 0;
 }
 
 void
