@@ -40,10 +40,12 @@ create_directory_listing(uint8_t *data)
 	for (int i = 0; i < 16; i++) {
 		*data++ = ' ';
 	}
-	if (!(getcwd((char *)data - 16, 256))) {
+	
+    if (!(getcwd((char *)data - 16, 256))) {
 		return false;
 	}
-	*data++ = '"';
+
+    *data++ = '"';
 	*data++ = ' ';
 	*data++ = '0';
 	*data++ = '0';
@@ -52,9 +54,14 @@ create_directory_listing(uint8_t *data)
 	*data++ = 'C';
 	*data++ = 0;
 
-	if (!(dirp = opendir("."))) {
+    // TODO: Separate later
+    char folder[256];
+    sprintf(folder, "%s", platform_get_documents_path());
+    
+    if (!(dirp = opendir(folder))) {
 		return 0;
 	}
+    
 	while ((dp = readdir(dirp))) {
 		size_t namlen = strlen(dp->d_name);
 		stat(dp->d_name, &st);

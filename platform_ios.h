@@ -11,6 +11,7 @@
 // Path support
 char* platform_get_base_path(void);
 char* platform_get_gif_path(void);
+char* platform_get_documents_path(void);
 double platform_get_ticks(void);
 
 // File support
