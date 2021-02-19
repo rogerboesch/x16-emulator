@@ -19,8 +19,8 @@
     [self.supportField becomeFirstResponder];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
 
     CGRect rect = self.view.bounds;
     rect.origin.x += 10;
@@ -31,6 +31,10 @@
     rect.size.height = 400 / factor;
     
     self.renderView.frame = rect;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     [self.renderView start];
 }
