@@ -23,6 +23,10 @@ size_t platform_file_write(FILE* fp, void* buf, size_t size, size_t mnemb);
 void platform_file_write_u8(FILE* fp, uint8_t byte);
 int platform_file_seek(FILE *stream, long int offset, int whence);
 
+// Cloud support
+void platform_load_from_cloud(void);
+char* platform_wait_for_cloud_filename(void);
+
 // Render support
 void platform_render_buffer(uint8_t* framebuffer);
 

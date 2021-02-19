@@ -124,13 +124,19 @@ create_directory_listing(uint8_t *data)
 void
 LOAD()
 {
-	char filename[41];
+	char filename[256];
 	uint8_t len = MIN(RAM[FNLEN], sizeof(filename) - 1);
 	memcpy(filename, (char *)&RAM[RAM[FNADR] | RAM[FNADR + 1] << 8], len);
 	filename[len] = 0;
 
 	uint16_t override_start = (x | (y << 8));
 
+    if (filename[0] == '@') {
+        // Load file from cloud
+        platform_load_from_cloud();
+        sprintf(filename, "%s", platform_wait_for_cloud_filename());
+    }
+    
 	if (filename[0] == '$') {
 		uint16_t dir_len = create_directory_listing(RAM + override_start);
 		uint16_t end = override_start + dir_len;
