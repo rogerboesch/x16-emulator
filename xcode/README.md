@@ -6,7 +6,7 @@ iOS Version
 iOS Version is writen February 2021 by Roger Boesch.
 
 
-![Screenshot](screenshot.png =250x)
+![Screenshot](screenshot.png)
 
 
 iOS Features
