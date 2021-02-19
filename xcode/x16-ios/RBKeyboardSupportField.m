@@ -1,5 +1,6 @@
 
 #import "RBKeyboardSupportField.h"
+#import "platform_virtual_keys.h"
 
 #define CHARACTERS @"abcdefghijklmnopqrstuvwxyz"
 
@@ -8,9 +9,9 @@
 // -----------------------------------------------------------------------------
 #pragma mark - Callback
 
-- (void)pressKey:(int)asciiCode ctrlKeyPressed:(BOOL)ctrlKeyPressed {
+- (void)pressKey:(int)asciiCode keyCode:(int)keyCode ctrlKeyPressed:(BOOL)ctrlKeyPressed {
     if (self.callback != NULL) {
-        self.callback(asciiCode, ctrlKeyPressed);
+        self.callback(asciiCode, keyCode, ctrlKeyPressed);
     }
 }
 
@@ -18,7 +19,7 @@
 #pragma mark - Field delegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [self pressKey:RBVK_Return ctrlKeyPressed:false];
+    [self pressKey:0 keyCode:RBVK_Return ctrlKeyPressed:false];
 
     return NO;
 }
@@ -43,7 +44,7 @@
         asciiCode = [string characterAtIndex:0];
     }
 
-    [self pressKey:asciiCode ctrlKeyPressed:false];
+    [self pressKey:asciiCode keyCode:RBVK_Unknown ctrlKeyPressed:false];
 
     if (asciiCode == RBVK_BackSpace && textField.text.length < 2) {
         return NO;
@@ -77,31 +78,31 @@
 }
 
 - (void)keyLeft:(UIKeyCommand *)keyCommand {
-    [self pressKey:RBVK_Left ctrlKeyPressed:false];
+    [self pressKey:0 keyCode:RBVK_Left ctrlKeyPressed:false];
 }
 
 - (void)keyRight:(UIKeyCommand *)keyCommand {
-    [self pressKey:RBVK_Right ctrlKeyPressed:false];
+    [self pressKey:0 keyCode:RBVK_Right ctrlKeyPressed:false];
 }
 
 - (void)keyUp:(UIKeyCommand *)keyCommand {
-    [self pressKey:RBVK_Up ctrlKeyPressed:false];
+    [self pressKey:0 keyCode:RBVK_Up ctrlKeyPressed:false];
 }
 
 - (void)keyDown:(UIKeyCommand *)keyCommand {
-    [self pressKey:RBVK_Down ctrlKeyPressed:false];
+    [self pressKey:0 keyCode:RBVK_Down ctrlKeyPressed:false];
 }
 
 - (void)keyPageUp:(UIKeyCommand *)keyCommand {
-    [self pressKey:RBVK_PageUp ctrlKeyPressed:false];
+    [self pressKey:0 keyCode:RBVK_PageUp ctrlKeyPressed:false];
 }
 
 - (void)keyPageDown:(UIKeyCommand *)keyCommand {
-    [self pressKey:RBVK_PageDown ctrlKeyPressed:false];
+    [self pressKey:0 keyCode:RBVK_PageDown ctrlKeyPressed:false];
 }
 
 - (void)keyEsc:(UIKeyCommand *)keyCommand {
-    [self pressKey:RBVK_Escape ctrlKeyPressed:false];
+    [self pressKey:0 keyCode:RBVK_Escape ctrlKeyPressed:false];
 }
 
 - (void)keyCtrl:(UIKeyCommand *)keyCommand {
@@ -111,7 +112,7 @@
         return;
     }
     
-    [self pressKey:[CHARACTERS characterAtIndex:pos] ctrlKeyPressed:true];
+    [self pressKey:[CHARACTERS characterAtIndex:pos] keyCode:RBVK_Unknown ctrlKeyPressed:true];
 }
 
 // -----------------------------------------------------------------------------

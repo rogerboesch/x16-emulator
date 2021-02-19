@@ -2,6 +2,7 @@
 #import "ViewController.h"
 #import "RBRenderView.h"
 #import "RBKeyboardSupportField.h"
+#import "RBGhost.h"
 
 @interface ViewController ()
 
@@ -46,6 +47,9 @@
     self.supportField.keyboardAppearance = UIKeyboardAppearanceDark;
     [self.view addSubview:self.supportField];
 
+    self.supportField.callback = ^(int ch, int code, BOOL ctrlPressed) {
+        [RBGhost pressKey:ch code:code ctrlPressed: ctrlPressed];
+    };
 }
 
 @end

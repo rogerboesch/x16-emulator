@@ -1,4 +1,5 @@
 #import <UIKit/UIKit.h>
+#import "platform_virtual_keys.h"
 
 #define OSView UIView
 #define OSColor UIColor
@@ -20,9 +21,6 @@
 - (void)nextFrame;
 
 - (void)render:(unsigned char *)machine;
-
-+ (void)sendKey:(int)press code:(int)code ctrlKeyPressed:(BOOL)ctrlKeyPressed;
-+ (void)handleKey:(int)code ctrlKeyPressed:(BOOL)ctrlKeyPressed;
 
 + (RBRenderView *)shared;
 

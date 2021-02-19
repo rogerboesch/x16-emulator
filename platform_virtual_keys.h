@@ -66,7 +66,7 @@ typedef enum _RBVirtualKey {
 	RBVK_Equal,        		// The = key
 	RBVK_Dash,         		// The - key
     RBVK_Add,               // The + key
-    RBVK_Subtract,          // The - key
+    RBVK_Minus,             // The - key
     RBVK_Multiply,          // The * key
     RBVK_Divide,            // The / key
     RBVK_Less,              // The < key
@@ -175,7 +175,7 @@ typedef enum _RBEventType {
 	RBEVT_TouchMoved,             // A touch moved (data in event.touch)
 	RBEVT_TouchEnded,             // A touch event ended (data in event.touch)
 	RBEVT_SensorChanged,          // A sensor value changed (data in event.sensor)
-
+    RBEVT_Quit,                   // Quit application
 	RBEVT_Count                   // Keep last -- the total number of event types
 } RBEventType;
 

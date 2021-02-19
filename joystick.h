@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include "glue.h"
 #include "via.h"
-#include "platform-ios.h"
+#include "platform_ios.h"
 
 #define JOY_LATCH_MASK 0x08
 #define JOY_DATA1_MASK 0x10

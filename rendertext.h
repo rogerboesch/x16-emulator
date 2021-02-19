@@ -4,7 +4,7 @@
 
 #define CHAR_SCALE 		(1)										// character pixel size.
 
-#include "platform-ios.h"
+#include "platform_ios.h"
 
 extern int xPos;
 extern int yPos;

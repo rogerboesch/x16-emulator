@@ -1039,11 +1039,137 @@ video_save(SDL_RWops *f)
 	SDL_RWwrite(f, &sprite_data[0], sizeof(uint8_t), sizeof(sprite_data));
 }
 
+// TODO: Make later a better split between original and iOS version
+//       Event handling is for now quick and dirty
+
+#include "platform_ios.h"
+#include "platform_virtual_keys.h"
+
+static RBEvent last_event = {};
+
+void x16_send_event(RBEvent evt) {
+    last_event = evt;
+}
+
+int poll_events(RBEvent* event) {
+    if (last_event.type == RBEVT_None) {
+        return 0;
+    }
+    
+    event->type = last_event.type;
+    event->control = last_event.control;
+    event->alt = last_event.alt;
+    event->shift = last_event.shift;
+    event->code = last_event.code;
+    event->ch = last_event.ch;
+
+    if (last_event.type == RBEVT_KeyPressed && last_event.control == 0 && last_event.alt == 0) {
+        last_event.type = RBEVT_TextEntered;
+    }
+    else if (last_event.type == RBEVT_TextEntered) {
+        last_event.type = RBEVT_None;
+    }
+    else {
+        last_event.type = RBEVT_None;
+    }
+    
+    return 1;
+}
+
+void process_events() {
+    RBEvent event;
+    while (poll_events(&event)) {
+        if (event.type == RBEVT_Quit) {
+            return;
+        }
+        
+        if (event.type == RBEVT_KeyPressed) {
+            bool consumed = false;
+            if (event.control) {
+                if (event.code == RBVK_S) {
+                    machine_dump();
+                    consumed = true;
+                }
+                else if (event.code == RBVK_R) {
+                    machine_reset();
+                    consumed = true;
+                }
+                else if (event.code == RBVK_V) {
+//                    machine_paste(SDL_GetClipboardText()); // TODO: Copy/Paste
+                    consumed = true;
+                }
+                else if (event.code == RBVK_F || event.code == RBVK_Return) {
+                    is_fullscreen = !is_fullscreen;
+                    //SDL_SetWindowFullscreen(window, is_fullscreen ? SDL_WINDOW_FULLSCREEN : 0);
+                    consumed = true;
+                }
+                else if (event.code == RBVK_Add || event.code == RBVK_Equal) {
+                    machine_toggle_warp();
+                    consumed = true;
+                }
+                else if (event.code == RBVK_A) {
+                    sdcard_attach();
+                    consumed = true;
+                }
+                else if (event.code == RBVK_D) {
+                    sdcard_detach();
+                    consumed = true;
+                }
+            }
+            
+            if (!consumed) {
+                // if (event.key.keysym.scancode == LSHORTCUT_KEY || event.key.keysym.scancode == RSHORTCUT_KEY) {
+                //   cmd_down = true;
+                // }
+                handle_keyboard(true, 0, event.code);
+            }
+            
+            return;
+        }
+        
+        if (event.type == RBEVT_KeyReleased) {
+            // if (event.key.keysym.scancode == LSHORTCUT_KEY || event.key.keysym.scancode == RSHORTCUT_KEY) {
+            //     cmd_down = false;
+            // }
+            handle_keyboard(false, 0, event.code);
+            return;
+        }
+        
+        if (event.type == RBEVT_MouseButtonPressed) {
+            switch (event.mouseBtn) {
+                case 0:
+                    mouse_button_down(0);
+                    break;
+                case 1:
+                    mouse_button_down(1);
+                    break;
+            }
+        }
+        
+        if (event.type == RBEVT_MouseButtonReleased) {
+            switch (event.mouseBtn) {
+                case 0:
+                    mouse_button_up(0);
+                    break;
+                case 1:
+                    mouse_button_up(1);
+                    break;
+            }
+        }
+        
+        if (event.type == RBEVT_MouseMoved) {
+            static int mouse_x;
+            static int mouse_y;
+            mouse_move(event.mouseX - mouse_x, event.mouseY - mouse_y);
+            mouse_x = event.mouseX;
+            mouse_y = event.mouseY;
+        }
+    }
+}
+
 bool
 video_update()
 {
-	static bool cmd_down = false;
-
 	// if LED is on, stamp red 8x4 square into top right of framebuffer
 	if (led_status) {
 		for (int y = 0; y < 4; y++) {
@@ -1083,87 +1209,9 @@ video_update()
         return true;
 	}
 
-    // TODO: Implement event handling
-    
-    /*
-	SDL_Event event;
-	while (SDL_PollEvent(&event)) {
-		if (event.type == SDL_QUIT) {
-			return false;
-		}
-		if (event.type == SDL_KEYDOWN) {
-			bool consumed = false;
-			if (cmd_down) {
-				if (event.key.keysym.sym == SDLK_s) {
-					machine_dump();
-					consumed = true;
-				} else if (event.key.keysym.sym == SDLK_r) {
-					machine_reset();
-					consumed = true;
-				} else if (event.key.keysym.sym == SDLK_v) {
-					machine_paste(SDL_GetClipboardText());
-					consumed = true;
-				} else if (event.key.keysym.sym == SDLK_f || event.key.keysym.sym == SDLK_RETURN) {
-					is_fullscreen = !is_fullscreen;
-					SDL_SetWindowFullscreen(window, is_fullscreen ? SDL_WINDOW_FULLSCREEN : 0);
-					consumed = true;
-				} else if (event.key.keysym.sym == SDLK_PLUS || event.key.keysym.sym == SDLK_EQUALS) {
-					machine_toggle_warp();
-					consumed = true;
-				} else if (event.key.keysym.sym == SDLK_a) {
-					sdcard_attach();
-					consumed = true;
-				} else if (event.key.keysym.sym == SDLK_d) {
-					sdcard_detach();
-					consumed = true;
-				}
-			}
-			if (!consumed) {
-				if (event.key.keysym.scancode == LSHORTCUT_KEY || event.key.keysym.scancode == RSHORTCUT_KEY) {
-					cmd_down = true;
-				}
-				handle_keyboard(true, event.key.keysym.sym, event.key.keysym.scancode);
-			}
-			return true;
-		}
-		if (event.type == SDL_KEYUP) {
-			if (event.key.keysym.scancode == LSHORTCUT_KEY || event.key.keysym.scancode == RSHORTCUT_KEY) {
-				cmd_down = false;
-			}
-			handle_keyboard(false, event.key.keysym.sym, event.key.keysym.scancode);
-			return true;
-		}
-		if (event.type == SDL_MOUSEBUTTONDOWN) {
-			switch (event.button.button) {
-				case SDL_BUTTON_LEFT:
-					mouse_button_down(0);
-					break;
-				case SDL_BUTTON_RIGHT:
-					mouse_button_down(1);
-					break;
-			}
-		}
-		if (event.type == SDL_MOUSEBUTTONUP) {
-			switch (event.button.button) {
-				case SDL_BUTTON_LEFT:
-					mouse_button_up(0);
-					break;
-				case SDL_BUTTON_RIGHT:
-					mouse_button_up(1);
-					break;
-			}
-		}
-		if (event.type == SDL_MOUSEMOTION) {
-			static int mouse_x;
-			static int mouse_y;
-			mouse_move(event.motion.x - mouse_x, event.motion.y - mouse_y);
-			mouse_x = event.motion.x;
-			mouse_y = event.motion.y;
-		}
-	}
-     
-     */
-	return true;
+    process_events();
+
+    return true;
 }
 
 void

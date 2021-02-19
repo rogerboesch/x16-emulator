@@ -9,7 +9,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include "glue.h"
-#include "platform-ios.h"
+#include "platform_ios.h"
 
 bool video_init(int window_scale, char *quality);
 void video_reset(void);

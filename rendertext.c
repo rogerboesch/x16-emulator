@@ -4,7 +4,7 @@
 #endif
 #include "rendertext.h"
 #include <ctype.h>
-#include "platform-ios.h"
+#include "platform_ios.h"
 
 #define CHAR_WIDTH 5
 #define CHAR_HEIGHT 7

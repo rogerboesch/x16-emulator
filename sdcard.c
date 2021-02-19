@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include "sdcard.h"
-#include "platform-ios.h"
+#include "platform_ios.h"
 
 //#define VERBOSE 1
 

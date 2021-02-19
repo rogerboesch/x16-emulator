@@ -12,7 +12,7 @@
 #include "memory.h"
 #include "video.h"
 #include "rom_symbols.h"
-#include "platform-ios.h"
+#include "platform_ios.h"
 
 #define MIN(a,b) (((a)<(b))?(a):(b))
 #define MAX(a,b) (((a)>(b))?(a):(b))

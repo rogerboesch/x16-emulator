@@ -12,7 +12,7 @@
 #ifndef _DEBUGGER_H
 #define _DEBUGGER_H
 
-#include "platform-ios.h"
+#include "platform_ios.h"
 
 extern int showDebugOnRender;
 

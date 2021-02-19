@@ -5,7 +5,7 @@
 #define _SD_CARD_H_
 #include <inttypes.h>
 #include <stdbool.h>
-#include "platform-ios.h"
+#include "platform_ios.h"
 
 extern FILE *sdcard_file;
 extern bool sdcard_attached;
