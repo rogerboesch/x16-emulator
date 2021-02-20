@@ -7,9 +7,11 @@
 
 #import "Toolbar.h"
 #import "RBGhost.h"
+#import "platform_ios.h"
 
 extern void machine_reset(void);
 extern void machine_toggle_warp(void);
+extern void machine_paste(char*);
 
 @implementation Toolbar
 
@@ -23,6 +25,9 @@ extern void machine_toggle_warp(void);
             break;
         case 3:
             machine_reset();
+            break;
+        case 4:
+            machine_paste(platform_get_from_clipboard());
             break;
     }
 }
@@ -54,6 +59,7 @@ extern void machine_toggle_warp(void);
     self.barTintColor = UIColor.blackColor;
 
     [self addButton:@"stop" tag:1];
+    [self addButton:@"paperclip.circle" tag:4];
     [self addDelimiter:YES];
     [self addButton:@"speedometer" tag:2];
     [self addDelimiter:NO];

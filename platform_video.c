@@ -17,7 +17,7 @@
 #include "vera_psg.h"
 #include "vera_pcm.h"
 #include "sdcard.h"
-
+#include "platform_ios.h"
 #include <limits.h>
 
 long record_gif_frames = 0;
@@ -1028,7 +1028,7 @@ void process_events() {
                     consumed = true;
                 }
                 else if (event.code == RBVK_V) {
-//                    machine_paste(SDL_GetClipboardText()); // TODO: Copy/Paste
+                    machine_paste(platform_get_from_clipboard());
                     consumed = true;
                 }
                 else if (event.code == RBVK_Add || event.code == RBVK_Equal) {

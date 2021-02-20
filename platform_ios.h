@@ -37,6 +37,9 @@ char* platform_wait_for_cloud_filename(void);
 // Render support
 void platform_render_buffer(uint8_t* framebuffer);
 
+// Paste support
+char* platform_get_from_clipboard(void);
+
 // Temporary, will be replaced later
 #define SDL_Keycode uint8_t
 #define SDL_Scancode uint8_t

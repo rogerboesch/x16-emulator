@@ -6,7 +6,7 @@
 //  "You can do whatever you like with it"
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #include <sys/time.h>
 
 char* platform_rom_file(void) {
@@ -76,4 +76,13 @@ void platform_file_write_u8(FILE* fp, uint8_t byte) {
 
 int platform_file_seek(FILE *fp, long int offset, int whence) {
     return fseek(fp, offset, whence);
+}
+
+char* platform_get_from_clipboard(void) {
+    NSString* str = [UIPasteboard generalPasteboard].string;
+    if (str == NULL) {
+        return "";
+    }
+    
+    return (char *)[str UTF8String];
 }
