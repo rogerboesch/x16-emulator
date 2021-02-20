@@ -20,7 +20,7 @@
 
 @property (nonatomic, retain) OSView* toolbar;
 
-- (void)start;
+- (void)startUsingWidth:(int)width height:(int)height;
 - (void)stop;
 - (void)pause;
 - (void)resume;

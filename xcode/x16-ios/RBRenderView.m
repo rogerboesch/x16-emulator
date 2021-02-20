@@ -8,9 +8,6 @@
 #import "RBRenderView.h"
 #include "platform_virtual_keys.h"
 
-#define SCREEN_WIDTH 640
-#define SCREEN_HEIGHT 480
-
 extern int platform_main(bool record);
 
 RBRenderView* INSTANCE_OF_RENDERVIEW = NULL;
@@ -18,6 +15,8 @@ RBRenderView* INSTANCE_OF_RENDERVIEW = NULL;
 @interface RBRenderView ()
 
 @property (nonatomic, retain) OSImageView* renderImageView;
+@property (nonatomic) int screenWidth;
+@property (nonatomic) int screenHeight;
 
 @end
 
@@ -32,17 +31,17 @@ RBRenderView* INSTANCE_OF_RENDERVIEW = NULL;
 #pragma mark - Emulator
 
 - (void)render:(uint8_t*)buffer {
-    int length = SCREEN_WIDTH*SCREEN_HEIGHT*4;
+    int length = self.screenWidth*self.screenHeight*4;
     CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, buffer, length, NULL);
     
     int bitsPerComponent = 8;
     int bitsPerPixel = 4*bitsPerComponent;
-    int bytesPerRow = 4*SCREEN_WIDTH;
+    int bytesPerRow = 4*self.screenWidth;
     CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
     CGBitmapInfo bitmapInfo = kCGImageAlphaNoneSkipFirst | kCGBitmapByteOrder32Little;
     CGColorRenderingIntent renderingIntent = kCGRenderingIntentDefault;
     
-    CGImageRef imageRef = CGImageCreate(SCREEN_WIDTH, SCREEN_HEIGHT, bitsPerComponent, bitsPerPixel, bytesPerRow, colorSpaceRef, bitmapInfo, provider, NULL, NO, renderingIntent);
+    CGImageRef imageRef = CGImageCreate(self.screenWidth, self.screenHeight, bitsPerComponent, bitsPerPixel, bytesPerRow, colorSpaceRef, bitmapInfo, provider, NULL, NO, renderingIntent);
     CGDataProviderRelease(provider);
     
     UIImage* myImage = [UIImage imageWithCGImage:imageRef];
@@ -52,7 +51,10 @@ RBRenderView* INSTANCE_OF_RENDERVIEW = NULL;
     CGColorSpaceRelease(colorSpaceRef);
 }
 
-- (void)start {
+- (void)startUsingWidth:(int)width height:(int)height {
+    self.screenWidth = width;
+    self.screenHeight = height;
+
     [self stop];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{

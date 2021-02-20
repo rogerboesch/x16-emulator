@@ -7,6 +7,7 @@
 
 #import "ViewController.h"
 #import "Toolbar.h"
+#import "video.h"
 #import "RBRenderView.h"
 #import "RBKeyboardSupportField.h"
 #import "RBGhost.h"
@@ -90,7 +91,7 @@ ViewController* INSTANCE_OF_VIEWCONTROLLER = NULL;
     CGRect rect = self.view.bounds;
     rect.origin.x += 10;
     rect.size.width -= 20;
-    rect.origin.y = 50;
+    rect.origin.y = 70;
 
     float factor = 640 / rect.size.width;
     rect.size.height = 480 / factor;
@@ -99,14 +100,14 @@ ViewController* INSTANCE_OF_VIEWCONTROLLER = NULL;
 
     rect = self.view.bounds;
     rect.size.height = 30;
-    rect.origin.y = 10;
+    rect.origin.y = 30;
     self.toolbar.frame = rect;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self.renderView start];
+    [self.renderView startUsingWidth:SCREEN_WIDTH height:SCREEN_HEIGHT];
 }
 
 - (void)viewDidLoad {
