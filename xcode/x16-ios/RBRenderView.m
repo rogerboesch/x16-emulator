@@ -1,3 +1,9 @@
+//
+//  RBRenderView.h
+//
+//  Written 2021 by Roger Boesch
+//  "You can do whatever you like with it"
+//
 
 #import "RBRenderView.h"
 #include "platform_virtual_keys.h"
@@ -89,7 +95,7 @@ RBRenderView* INSTANCE_OF_RENDERVIEW = NULL;
     INSTANCE_OF_RENDERVIEW = self;
     
     self.renderImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    self.renderImageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.renderImageView.contentMode = UIViewContentModeScaleAspectFit;
     self.renderImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self addSubview:self.renderImageView];
 

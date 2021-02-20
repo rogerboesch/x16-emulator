@@ -1,12 +1,14 @@
-/**********************************************/
-// File     :     joystick.c
-// Author   :     John Bliss
-// Date     :     September 27th 2019
-// iOS version by Roger Boesch
-/**********************************************/
+//
+//  platform_joystick.c
+//  Simulates joystick on iOS (not yet working)
+//
+//  Replaces joystick.c from original Commander X16 emulator written by John Bliss
+//
+//  Written 2021 by Roger Boesch
+//  "You can do whatever you like with it"
+//
 
 #include "joystick.h"
-
 
 enum joy_status joy1_mode = NONE;
 enum joy_status joy2_mode = NONE;
@@ -22,8 +24,7 @@ static uint8_t clock_count = 0;
 bool joystick_latch, joystick_clock;
 bool joystick1_data, joystick2_data;
 
-bool joystick_init()
-{
+bool joystick_init() {
     // TODO: Implement
 
     /*
@@ -60,8 +61,7 @@ bool joystick_init()
     return true;
 }
 
-void joystick_step()
-{
+void joystick_step() {
     if (!writing) { //if we are not already writing, check latch to
         //see if we need to start
         handle_latch(joystick_latch, joystick_clock);
@@ -75,15 +75,18 @@ void joystick_step()
         if (joystick_clock != old_clock) {
             if (old_clock) {
                 old_clock = joystick_clock;
-            } else {  //only write next bit when the new clock is high
+            }
+            else {  //only write next bit when the new clock is high
                 clock_count +=1;
                 old_clock = joystick_clock;
+                
                 if (clock_count < 16) { // write out the next 15 bits
                     joystick1_data = (joy1_mode != NONE) ? (joystick1_state & 1) : 1;
                     joystick2_data = (joy2_mode != NONE) ? (joystick2_state & 1) : 1;
                     joystick1_state = joystick1_state >> 1;
                     joystick2_state = joystick2_state >> 1;
-                } else {
+                }
+                else {
                     //Done writing controller data
                     //reset flag and set count to 0
                     writing = false;
@@ -94,13 +97,9 @@ void joystick_step()
             }
         }
     }
-
-
-
 }
 
-bool handle_latch(bool latch, bool clock)
-{
+bool handle_latch(bool latch, bool clock) {
     if (latch){
         clock_count = 0;
         //get the 16-representation to put to the VIA
@@ -121,8 +120,7 @@ bool handle_latch(bool latch, bool clock)
 
 //get current state from SDL controller
 //Should replace this with SDL events, so we do not miss inputs when polling
-uint16_t get_joystick_state(SDL_GameController *control, enum joy_status mode)
-{
+uint16_t get_joystick_state(SDL_GameController *control, enum joy_status mode) {
     // TODO: Implement
 
     /*

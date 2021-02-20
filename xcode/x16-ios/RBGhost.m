@@ -1,7 +1,7 @@
 //
-//  rb_ghost.m
+//  RBGhost.m
 //
-//  Created by Roger Boesch on Jan. 10, 2021.
+//  Written 2021 by Roger Boesch
 //  "You can do whatever you like with it"
 //
 

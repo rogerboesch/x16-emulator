@@ -16,7 +16,7 @@ int xPos = 0;
 int yPos = 0;
 
 // font texture
-SDL_Texture *fontTexture;
+//SDL_Texture *fontTexture;
 int textureInitialized = 0;
 
 // *******************************************************************************************

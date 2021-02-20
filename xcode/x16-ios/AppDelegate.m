@@ -1,3 +1,9 @@
+//
+//  AppDelegate.m
+//
+//  Written 2021 by Roger Boesch
+//  "You can do whatever you like with it"
+//
 
 #import "AppDelegate.h"
 

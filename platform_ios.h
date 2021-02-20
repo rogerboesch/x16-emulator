@@ -1,3 +1,10 @@
+//
+//  platform_ios.h
+//  Platform specfic includes for iOS (non SDL)
+//
+//  Written 2021 by Roger Boesch
+//  "You can do whatever you like with it"
+//
 
 #ifndef platform_ios_h
 #define platform_ios_h
@@ -30,19 +37,16 @@ char* platform_wait_for_cloud_filename(void);
 // Render support
 void platform_render_buffer(uint8_t* framebuffer);
 
-// Temporary, replace later
-
+// Temporary, will be replaced later
 #define SDL_Keycode uint8_t
 #define SDL_Scancode uint8_t
 #define SDL_Color uint8_t
 
-#define SDL_Surface void
-#define SDL_Texture void
-#define SDL_Window void
+// Replace this later by platform independent types
 #define SDL_Renderer void
 #define SDL_GameController void
-#define SDL_GetTicks void
 
+// Replace this later by directly call platform_xx functions
 #define SDL_RWops FILE
 #define SDL_RWread platform_file_read
 #define SDL_RWseek platform_file_seek

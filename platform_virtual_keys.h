@@ -1,7 +1,8 @@
 //
-//  rb_virtual_keys.h
+//  platform_virtual_keys.h
+//  Simulates real keyboard behaviour on any iOS device
 //
-//  Created by Roger Boesch on Jan. 10, 2021.
+//  Written 2021 by Roger Boesch
 //  "You can do whatever you like with it"
 //
 

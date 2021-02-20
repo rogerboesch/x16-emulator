@@ -1,13 +1,13 @@
 //
-//  rb_ghost.h
+//  RBGhost.h
 //
-//  Created by Roger Boesch on Jan. 10, 2021.
+//  Written 2021 by Roger Boesch
 //  "You can do whatever you like with it"
 //
 
 #import "TargetConditionals.h"
-
 #import <UIKit/UIKit.h>
+#import "platform_virtual_keys.h"
 
 @interface RBGhost : NSObject
 

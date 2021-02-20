@@ -1,14 +1,21 @@
+//
+//  ViewController.h
+//
+//  Written 2021 by Roger Boesch
+//  "You can do whatever you like with it"
+//
 
 #import "ViewController.h"
+#import "Toolbar.h"
 #import "RBRenderView.h"
 #import "RBKeyboardSupportField.h"
 #import "RBGhost.h"
-
 
 ViewController* INSTANCE_OF_VIEWCONTROLLER = NULL;
 
 @interface ViewController ()
 
+@property (nonatomic, retain) Toolbar* toolbar;
 @property (nonatomic, retain) RBRenderView* renderView;
 @property (nonatomic, retain) RBKeyboardSupportField* supportField;
 
@@ -83,12 +90,17 @@ ViewController* INSTANCE_OF_VIEWCONTROLLER = NULL;
     CGRect rect = self.view.bounds;
     rect.origin.x += 10;
     rect.size.width -= 20;
-    rect.origin.y = 100;
+    rect.origin.y = 50;
 
     float factor = 640 / rect.size.width;
-    rect.size.height = 400 / factor;
+    rect.size.height = 480 / factor;
     
     self.renderView.frame = rect;
+
+    rect = self.view.bounds;
+    rect.size.height = 30;
+    rect.origin.y = 10;
+    self.toolbar.frame = rect;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -100,21 +112,28 @@ ViewController* INSTANCE_OF_VIEWCONTROLLER = NULL;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = UIColor.blackColor;
     self.cloudFilename = @"";
-    
     INSTANCE_OF_VIEWCONTROLLER = self;
     
-    self.view.backgroundColor = UIColor.blackColor;
-    
+    self.toolbar = [[Toolbar alloc] initWithFrame:CGRectZero];
+    [self.view addSubview:self.toolbar];
+
     self.renderView = [[RBRenderView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.renderView];
-
+    self.renderView.backgroundColor = UIColor.blueColor;
+    
     self.supportField = [[RBKeyboardSupportField alloc] initWithFrame:CGRectMake(2400, 2400, 100, 20)];
     self.supportField.keyboardAppearance = UIKeyboardAppearanceDark;
     [self.view addSubview:self.supportField];
 
     self.supportField.callback = ^(int ch, int code, BOOL ctrlPressed) {
-        [RBGhost pressKey:ch code:code ctrlPressed: ctrlPressed];
+        if (ctrlPressed && ch == 'x') {
+            [RBGhost pressKey:0 code:RBVK_Escape ctrlPressed: false];
+        }
+        else {
+            [RBGhost pressKey:ch code:code ctrlPressed: ctrlPressed];
+        }
     };
 }
 

@@ -1,8 +1,8 @@
 //
 //  AppDelegate.h
-//  x16-ios
 //
-//  Created by Roger Boesch on 18.02.21.
+//  Written 2021 by Roger Boesch
+//  "You can do whatever you like with it"
 //
 
 #import <UIKit/UIKit.h>

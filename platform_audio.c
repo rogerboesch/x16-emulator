@@ -1,7 +1,12 @@
-// Commander X16 Emulator
-// Copyright (c) 2020 Frank van den Hoef
-// All rights reserved. License: 2-clause BSD
-// iOS version by Roger Boesch
+//
+//  platform_audio.c
+//  Audio support on iOS (not yet working)
+//
+//  Replaces audio.c from original Commander X16 emulator written by Frank van den Hoef
+//
+//  Written 2021 by Roger Boesch
+//  "You can do whatever you like with it"
+//
 
 #include "audio.h"
 #include "vera_psg.h"
@@ -29,10 +34,9 @@ static int               wridx    = 0;
 static int               buf_cnt  = 0;
 static int               num_bufs = 0;
 
-static void
-audio_callback(void *userdata, uint8_t *stream, int len)
-{
+static void audio_callback(void *userdata, uint8_t *stream, int len) {
     int expected = 2 * SAMPLES_PER_BUFFER * sizeof(int16_t);
+
     if (len != expected) {
         printf("Audio buffer size mismatch! (expected: %d, got: %d)\n", expected, len);
         return;
@@ -44,15 +48,15 @@ audio_callback(void *userdata, uint8_t *stream, int len)
     }
 
     memcpy(stream, buffers[rdidx++], len);
+
     if (rdidx == num_bufs) {
         rdidx = 0;
     }
+
     buf_cnt--;
 }
 
-void
-audio_init(const char *dev_name, int num_audio_buffers)
-{
+void audio_init(const char *dev_name, int num_audio_buffers) {
     if (audio_dev > 0) {
         audio_close();
     }
@@ -62,6 +66,7 @@ audio_init(const char *dev_name, int num_audio_buffers)
     if (num_bufs < 3) {
         num_bufs = 3;
     }
+    
     if (num_bufs > 1024) {
         num_bufs = 1024;
     }
@@ -102,9 +107,7 @@ audio_init(const char *dev_name, int num_audio_buffers)
     //SDL_PauseAudioDevice(audio_dev, 0);
 }
 
-void
-audio_close(void)
-{
+void audio_close(void) {
     //SDL_CloseAudioDevice(audio_dev);
     audio_dev = 0;
 
@@ -116,15 +119,15 @@ audio_close(void)
                 buffers[i] = NULL;
             }
         }
+
         free(buffers);
         buffers = NULL;
     }
 }
 
-void
-audio_render(int cpu_clocks)
-{
+void audio_render(int cpu_clocks) {
     cpu_clks += cpu_clocks;
+
     if (cpu_clks > 8) {
         int c = cpu_clks / 8;
         cpu_clks -= c * 8;
@@ -152,6 +155,7 @@ audio_render(int cpu_clocks)
             if (buf_available) {
                 // Mix PSG, PCM and YM output
                 int16_t *buf = buffers[wridx];
+
                 for (int i = 0; i < 2 * SAMPLES_PER_BUFFER; i++) {
                     buf[i] = ((int)psg_buf[i] + (int)pcm_buf[i] + (int)ym_buf[i]) / 3;
                 }
@@ -161,6 +165,7 @@ audio_render(int cpu_clocks)
                 if (wridx == num_bufs) {
                     wridx = 0;
                 }
+
                 buf_cnt++;
                 //SDL_UnlockAudioDevice(audio_dev);
             }
@@ -168,7 +173,5 @@ audio_render(int cpu_clocks)
     }
 }
 
-void
-audio_usage(void)
-{
+void audio_usage(void) {
 }
