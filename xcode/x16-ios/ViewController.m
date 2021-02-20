@@ -35,7 +35,7 @@ ViewController* INSTANCE_OF_VIEWCONTROLLER = NULL;
     if (urls.count > 0) {
         NSURL* originalURL = [urls objectAtIndex:0];
 
-        BOOL success = [originalURL startAccessingSecurityScopedResource];
+        [originalURL startAccessingSecurityScopedResource];
         NSFileCoordinator *fileCoordinator = [[NSFileCoordinator alloc] init];
         NSError *error = nil;
         [fileCoordinator coordinateReadingItemAtURL:originalURL options:NSFileCoordinatorReadingForUploading error:&error byAccessor:^(NSURL *newURL) {
@@ -100,7 +100,7 @@ ViewController* INSTANCE_OF_VIEWCONTROLLER = NULL;
 
     rect = self.view.bounds;
     rect.size.height = 30;
-    rect.origin.y = 30;
+    rect.origin.y = 35;
     self.toolbar.frame = rect;
 }
 

@@ -8,6 +8,8 @@
 #import "Toolbar.h"
 #import "RBGhost.h"
 
+extern void machine_reset(void);
+
 @implementation Toolbar
 
 - (void)tap:(UIButton *)sender {
@@ -16,7 +18,7 @@
             [RBGhost pressKey:0 code:RBVK_Escape ctrlPressed:NO];
             break;
         case 2:
-            // Restart
+            machine_reset();
             break;
     }
 }
