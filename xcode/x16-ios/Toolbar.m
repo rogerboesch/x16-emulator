@@ -9,6 +9,7 @@
 #import "RBGhost.h"
 
 extern void machine_reset(void);
+extern void machine_toggle_warp(void);
 
 @implementation Toolbar
 
@@ -18,20 +19,29 @@ extern void machine_reset(void);
             [RBGhost pressKey:0 code:RBVK_Escape ctrlPressed:NO];
             break;
         case 2:
+            machine_toggle_warp();
+            break;
+        case 3:
             machine_reset();
             break;
     }
 }
 
-- (void)addButton:(NSString *)imageName {
-    int index = (int)self.items.count+1;
-    
+- (void)addButton:(NSString *)imageName tag:(int)tag {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[UIImage systemImageNamed:imageName] forState:UIControlStateNormal];
     button.frame = CGRectMake(0, 0, 40, 40);
-    button.tag = index;
+    button.tag = tag;
     [button addTarget:self action:@selector(tap:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem* item = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
+    NSMutableArray* newItems = [NSMutableArray arrayWithArray:self.items];
+    [newItems addObject:item];
+    self.items = newItems;
+}
+
+- (void)addDelimiter:(BOOL)flexible {
+    UIBarButtonItem* item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:(flexible ? UIBarButtonSystemItemFlexibleSpace : UIBarButtonSystemItemFixedSpace) menu:nil];
     
     NSMutableArray* newItems = [NSMutableArray arrayWithArray:self.items];
     [newItems addObject:item];
@@ -43,8 +53,11 @@ extern void machine_reset(void);
 
     self.barTintColor = UIColor.blackColor;
 
-    [self addButton:@"stop"];
-    [self addButton:@"restart.circle"];
+    [self addButton:@"stop" tag:1];
+    [self addDelimiter:YES];
+    [self addButton:@"speedometer" tag:2];
+    [self addDelimiter:NO];
+    [self addButton:@"restart.circle" tag:3];
     
     return self;
 }
