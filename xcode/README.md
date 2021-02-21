@@ -13,6 +13,7 @@ iOS Features
 * Support of virtual and physical keyboard
 * iCloud access: Type *LOAD "@"* to open the iCloud Drive and load the file
 * Copy/paste support
+* Touch support
 * Portrait and landscape support
 * Runs on iPhone and iPad
 
@@ -20,7 +21,7 @@ iOS Features
 *Under development:*
 
 * Audio Support
-* GEOS Support (mouse)
+* GEOS Support
 * SD card support
 * Debugger support
 

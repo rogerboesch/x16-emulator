@@ -116,6 +116,7 @@ ViewController* INSTANCE_OF_VIEWCONTROLLER = NULL;
     evt.alt = 0;
     evt.mouseX = x;
     evt.mouseY = y;
+    evt.mouseBtn = 0;
 
     switch (recognizer.state) {
         case UIGestureRecognizerStateBegan:

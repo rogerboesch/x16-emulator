@@ -997,6 +997,7 @@ int poll_events(RBEvent* event) {
     event->ch = last_event.ch;
     event->mouseX = last_event.mouseX;
     event->mouseY = last_event.mouseY;
+    event->mouseBtn = last_event.mouseBtn;
 
     if (last_event.type == RBEVT_KeyPressed && last_event.control == 0 && last_event.alt == 0) {
         last_event.type = RBEVT_TextEntered;
