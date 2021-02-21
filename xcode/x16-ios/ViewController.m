@@ -12,6 +12,8 @@
 #import "RBKeyboardSupportField.h"
 #import "RBGhost.h"
 
+extern void x16_send_event(RBEvent evt);
+
 ViewController* INSTANCE_OF_VIEWCONTROLLER = NULL;
 
 @interface ViewController ()
@@ -26,6 +28,8 @@ ViewController* INSTANCE_OF_VIEWCONTROLLER = NULL;
 @end
 
 @implementation ViewController
+
+// MARK: - Cloud support
 
 - (void)documentPickerWasCancelled:(UIDocumentPickerViewController *)controller {
     self.cloudPickerActive = NO;
@@ -75,8 +79,24 @@ ViewController* INSTANCE_OF_VIEWCONTROLLER = NULL;
     [self presentViewController:documentProvider animated:YES completion:NULL];
 }
 
-- (BOOL)cloudPickerIsACtive {
-    return self.cloudPickerActive;
+// MARK: - Mouse support
+
+- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
+    CGPoint location = [recognizer locationInView:recognizer.view];
+    int x = SCREEN_WIDTH / self.renderView.frame.size.width * location.x;
+    int y = SCREEN_HEIGHT / self.renderView.frame.size.height * location.y;
+
+    RBEvent evt;
+    evt.type = RBEVT_MouseMoved;
+    evt.code = RBVK_LShift;
+    evt.ch = 0;
+    evt.control = 0;
+    evt.shift = 0;
+    evt.alt = 0;
+    evt.mouseX = x;
+    evt.mouseY = y;
+    
+    x16_send_event(evt);
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -136,6 +156,9 @@ ViewController* INSTANCE_OF_VIEWCONTROLLER = NULL;
             [RBGhost pressKey:ch code:code ctrlPressed: ctrlPressed];
         }
     };
+    
+    UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    [self.renderView addGestureRecognizer:singleFingerTap];
 }
 
 @end
