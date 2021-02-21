@@ -523,6 +523,8 @@ int main(int argc, char **argv)
 	argc--;
 	argv++;
 
+#ifndef TARGET_OS_IPHONE
+
 	while (argc > 0) {
 		if (!strcmp(argv[0], "-rom")) {
 			argc--;
@@ -815,6 +817,7 @@ int main(int argc, char **argv)
 			usage();
 		}
 	}
+#endif
 
     SDL_RWops *f = SDL_RWFromFile(rom_path, "rb");
 	if (!f) {
