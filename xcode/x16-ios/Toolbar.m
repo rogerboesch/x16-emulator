@@ -11,6 +11,7 @@
 
 extern void machine_reset(void);
 extern void machine_toggle_warp(void);
+extern void machine_toggle_geos(void);
 extern void machine_paste(char*);
 
 @implementation Toolbar
@@ -28,6 +29,9 @@ extern void machine_paste(char*);
             break;
         case 4:
             machine_paste(platform_get_from_clipboard());
+            break;
+        case 5:
+            machine_toggle_geos();
             break;
     }
 }
@@ -61,10 +65,11 @@ extern void machine_paste(char*);
     [self addButton:@"stop" tag:1];
     [self addButton:@"paperclip.circle" tag:4];
     [self addDelimiter:YES];
+    [self addButton:@"display" tag:5];
     [self addButton:@"speedometer" tag:2];
     [self addDelimiter:NO];
     [self addButton:@"restart.circle" tag:3];
-    
+
     return self;
 }
 

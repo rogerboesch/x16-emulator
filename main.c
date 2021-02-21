@@ -73,6 +73,7 @@ bool pasting_bas = false;
 
 uint16_t num_ram_banks = 64; // 512 KB default
 
+bool run_geos = false;
 bool log_video = false;
 bool log_speed = false;
 bool log_keyboard = false;
@@ -281,8 +282,20 @@ timing_update()
 void
 machine_toggle_warp()
 {
-	warp_mode = !warp_mode;
-	timing_init();
+    warp_mode = !warp_mode;
+    timing_init();
+}
+
+void machine_toggle_geos() {
+    run_geos = !run_geos;
+    machine_reset();
+    
+    if (run_geos) {
+        paste_text = "GEOS\r";
+    }
+    else {
+        paste_text = "";
+    }
 }
 
 uint8_t
@@ -492,7 +505,6 @@ int main(int argc, char **argv)
 	char *prg_path = NULL;
 	char *bas_path = NULL;
 	char *sdcard_path = NULL;
-	bool run_geos = false;
 	bool run_test = false;
 	int test_number = 0;
 	int audio_buffers = 8;
