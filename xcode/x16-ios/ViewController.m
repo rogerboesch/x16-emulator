@@ -11,10 +11,30 @@
 #import "RBRenderView.h"
 #import "RBKeyboardSupportField.h"
 #import "RBGhost.h"
+#import <UIKit/UIGestureRecognizerSubclass.h>
 
 extern void x16_send_event(RBEvent evt);
 
 ViewController* INSTANCE_OF_VIEWCONTROLLER = NULL;
+
+@interface TouchDownGestureRecognizer : UIGestureRecognizer
+@end
+
+@implementation TouchDownGestureRecognizer
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    self.state = UIGestureRecognizerStateBegan;
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    self.state = UIGestureRecognizerStateChanged;
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    self.state = UIGestureRecognizerStateEnded;
+}
+
+@end
 
 @interface ViewController ()
 
@@ -81,13 +101,14 @@ ViewController* INSTANCE_OF_VIEWCONTROLLER = NULL;
 
 // MARK: - Mouse support
 
-- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
+- (void)handleTouch:(TouchDownGestureRecognizer *)recognizer {
     CGPoint location = [recognizer locationInView:recognizer.view];
     int x = SCREEN_WIDTH / self.renderView.frame.size.width * location.x;
     int y = SCREEN_HEIGHT / self.renderView.frame.size.height * location.y;
-
+    NSLog(@"state: %lu", recognizer.state);
+    
     RBEvent evt;
-    evt.type = RBEVT_MouseMoved;
+    evt.type = RBEVT_None;
     evt.code = RBVK_LShift;
     evt.ch = 0;
     evt.control = 0;
@@ -95,7 +116,22 @@ ViewController* INSTANCE_OF_VIEWCONTROLLER = NULL;
     evt.alt = 0;
     evt.mouseX = x;
     evt.mouseY = y;
-    
+
+    switch (recognizer.state) {
+        case UIGestureRecognizerStateBegan:
+            evt.type = RBEVT_MouseButtonPressed;
+            break;
+        case UIGestureRecognizerStateChanged:
+            evt.type = RBEVT_MouseMoved;
+            break;
+        case UIGestureRecognizerStateEnded:
+            evt.type = RBEVT_MouseButtonReleased;
+            break;
+            
+        default:
+            return;
+    }
+
     x16_send_event(evt);
 }
 
@@ -157,8 +193,8 @@ ViewController* INSTANCE_OF_VIEWCONTROLLER = NULL;
         }
     };
     
-    UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
-    [self.renderView addGestureRecognizer:singleFingerTap];
+    TouchDownGestureRecognizer *touch = [[TouchDownGestureRecognizer alloc] initWithTarget:self action:@selector(handleTouch:)];
+    [self.renderView addGestureRecognizer:touch];
 }
 
 @end
