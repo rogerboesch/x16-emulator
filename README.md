@@ -11,7 +11,7 @@ iOS Version
 --------
 *This is a fork to work on the iOS version. Its's currently a quick and dirty implementation (work in progress)*
 
-iOS Version writen by Roger Boesch. More infos [here](xcode).
+iOS Version written 2021 by Roger Boesch. More infos  at [The Classics Coder](http://classicscoder.com/projects.html)
 
 
 Commander x16 Emulator
