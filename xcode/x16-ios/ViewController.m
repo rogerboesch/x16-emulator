@@ -94,7 +94,7 @@ ViewController* INSTANCE_OF_VIEWCONTROLLER = NULL;
     rect.origin.y = 70;
 
     float factor = 640 / rect.size.width;
-    rect.size.height = 480 / factor;
+    rect.size.height = MIN(rect.size.height-70, 480 / factor);
     
     self.renderView.frame = rect;
 
