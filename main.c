@@ -41,8 +41,6 @@
 #include <pthread.h>
 #endif
 
-#include <ctype.h>
-
 void *emulator_loop(void *param);
 void emscripten_main_loop(void);
 
@@ -73,7 +71,6 @@ bool pasting_bas = false;
 
 uint16_t num_ram_banks = 64; // 512 KB default
 
-bool run_geos = false;
 bool log_video = false;
 bool log_speed = false;
 bool log_keyboard = false;
@@ -91,7 +88,7 @@ int window_scale = 1;
 char *scale_quality = "best";
 
 int frames;
-double sdlTicks_base;
+int32_t sdlTicks_base;
 int32_t last_perf_update;
 int32_t perf_frame_count;
 char window_title[30];
@@ -191,7 +188,7 @@ machine_dump()
 		}
 		index++;
 	}
-    SDL_RWops *f = SDL_RWFromFile(filename, "wb");
+	SDL_RWops *f = SDL_RWFromFile(filename, "wb");
 	if (!f) {
 		printf("Cannot write to %s!\n", filename);
 		return;
@@ -237,7 +234,7 @@ machine_paste(char *s)
 void
 timing_init() {
 	frames = 0;
-	sdlTicks_base = platform_get_ticks();
+	sdlTicks_base = SDL_GetTicks();
 	last_perf_update = 0;
 	perf_frame_count = 0;
 }
@@ -246,8 +243,8 @@ void
 timing_update()
 {
 	frames++;
-	double sdlTicks = platform_get_ticks() - sdlTicks_base;
-	double diff_time = 1000 * frames / 60 - sdlTicks;
+	int32_t sdlTicks = SDL_GetTicks() - sdlTicks_base;
+	int32_t diff_time = 1000 * frames / 60 - sdlTicks;
 	if (!warp_mode && diff_time > 0) {
 		usleep(1000 * diff_time);
 	}
@@ -282,20 +279,8 @@ timing_update()
 void
 machine_toggle_warp()
 {
-    warp_mode = !warp_mode;
-    timing_init();
-}
-
-void machine_toggle_geos() {
-    run_geos = !run_geos;
-    machine_reset();
-    
-    if (run_geos) {
-        paste_text = "GEOS\r";
-    }
-    else {
-        paste_text = "";
-    }
+	warp_mode = !warp_mode;
+	timing_init();
 }
 
 uint8_t
@@ -479,32 +464,17 @@ usage_keymap()
 	exit(1);
 }
 
-#ifdef TARGET_OS_IPHONE
-
-extern int platform_argc;
-extern char** platform_argv;
-
-int platform_main(bool record)
+int
+main(int argc, char **argv)
 {
-    int argc = platform_argc;
-    char** argv = platform_argv;
-    
-    if (record) {
-        record_gif = RECORD_GIF_PAUSED;
-        gif_path = platform_get_gif_path();
-    }
-
-#else
-int main(int argc, char **argv)
-{
-#endif
-    char *rom_filename = "rom.bin";
+	char *rom_filename = "rom.bin";
 	char rom_path_data[PATH_MAX];
 
 	char *rom_path = rom_path_data;
 	char *prg_path = NULL;
 	char *bas_path = NULL;
 	char *sdcard_path = NULL;
+	bool run_geos = false;
 	bool run_test = false;
 	int test_number = 0;
 	int audio_buffers = 8;
@@ -513,7 +483,7 @@ int main(int argc, char **argv)
 
 	run_after_load = false;
 
-	char *base_path = platform_get_base_path();
+	char *base_path = SDL_GetBasePath();
 
 	// This causes the emulator to load ROM data from the executable's directory when
 	// no ROM file is specified on the command line.
@@ -522,8 +492,6 @@ int main(int argc, char **argv)
 
 	argc--;
 	argv++;
-
-#ifndef TARGET_OS_IPHONE
 
 	while (argc > 0) {
 		if (!strcmp(argv[0], "-rom")) {
@@ -817,14 +785,12 @@ int main(int argc, char **argv)
 			usage();
 		}
 	}
-#endif
 
-    SDL_RWops *f = SDL_RWFromFile(rom_path, "rb");
+	SDL_RWops *f = SDL_RWFromFile(rom_path, "rb");
 	if (!f) {
 		printf("Cannot open %s!\n", rom_path);
 		exit(1);
 	}
-    
 	size_t rom_size = SDL_RWread(f, ROM, ROM_SIZE, 1);
 	(void)rom_size;
 	SDL_RWclose(f);
@@ -854,7 +820,7 @@ int main(int argc, char **argv)
 	}
 
 	if (bas_path) {
-        SDL_RWops *bas_file = SDL_RWFromFile(bas_path, "r");
+		SDL_RWops *bas_file = SDL_RWFromFile(bas_path, "r");
 		if (!bas_file) {
 			printf("Cannot open %s!\n", bas_path);
 			exit(1);
@@ -877,7 +843,7 @@ int main(int argc, char **argv)
 		snprintf(paste_text, sizeof(paste_text_data), "TEST %d\r", test_number);
 	}
 
-	//SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS | SDL_INIT_GAMECONTROLLER | SDL_INIT_AUDIO);
+	SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS | SDL_INIT_GAMECONTROLLER | SDL_INIT_AUDIO);
 
 	audio_init(audio_dev_name, audio_buffers);
 
@@ -900,6 +866,7 @@ int main(int argc, char **argv)
 
 	audio_close();
 	video_end();
+	SDL_Quit();
 
 #ifdef PERFSTAT
 	for (int pc = 0xc000; pc < sizeof(stat)/sizeof(*stat); pc++) {
@@ -1047,7 +1014,7 @@ emulator_loop(void *param)
 		audio_render(clocks);
 
 		instruction_counter++;
-        
+
 		if (new_frame) {
 			if (!video_update()) {
 				break;
