@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB1A537C25E44AE4004F73EE /* platform_audio.c in Sources */ = {isa = PBXBuildFile; fileRef = DB1A537525E44AE4004F73EE /* platform_audio.c */; };
+		DB1A537D25E44AE4004F73EE /* platform_video.c in Sources */ = {isa = PBXBuildFile; fileRef = DB1A537625E44AE4004F73EE /* platform_video.c */; };
+		DB1A537E25E44AE4004F73EE /* platform_joystick.c in Sources */ = {isa = PBXBuildFile; fileRef = DB1A537725E44AE4004F73EE /* platform_joystick.c */; };
+		DB1A537F25E44AE4004F73EE /* platform_keyboard.c in Sources */ = {isa = PBXBuildFile; fileRef = DB1A537825E44AE4004F73EE /* platform_keyboard.c */; };
+		DB1A538025E44AE4004F73EE /* platform_virtual_keys.c in Sources */ = {isa = PBXBuildFile; fileRef = DB1A537925E44AE4004F73EE /* platform_virtual_keys.c */; };
+		DB1A538125E44AE4004F73EE /* platform_main.c in Sources */ = {isa = PBXBuildFile; fileRef = DB1A537A25E44AE4004F73EE /* platform_main.c */; };
 		DBBAD25E25E0E87400BF2C79 /* Toolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = DBBAD25D25E0E87400BF2C79 /* Toolbar.m */; };
-		DBBAD26D25E2DA7000BF2C79 /* platform_main.c in Sources */ = {isa = PBXBuildFile; fileRef = DBBAD26C25E2DA7000BF2C79 /* platform_main.c */; };
 		DBF6055025DECF7500936ABC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF6054F25DECF7500936ABC /* AppDelegate.m */; };
 		DBF6055325DECF7500936ABC /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF6055225DECF7500936ABC /* SceneDelegate.m */; };
 		DBF6055625DECF7500936ABC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF6055525DECF7500936ABC /* ViewController.m */; };
@@ -32,27 +37,29 @@
 		DBF6065E25DEE4E900936ABC /* ym2151.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6062A25DEE4E900936ABC /* ym2151.c */; };
 		DBF6065F25DEE4E900936ABC /* disasm.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6062C25DEE4E900936ABC /* disasm.c */; };
 		DBF6066025DEE4E900936ABC /* debugger.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6062E25DEE4E900936ABC /* debugger.c */; };
-		DBF6066125DEE4E900936ABC /* platform_video.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6063025DEE4E900936ABC /* platform_video.c */; };
 		DBF6066325DEE4E900936ABC /* symbolize.sh in Resources */ = {isa = PBXBuildFile; fileRef = DBF6063425DEE4E900936ABC /* symbolize.sh */; };
 		DBF6066425DEE4E900936ABC /* rom_symbols.sh in Resources */ = {isa = PBXBuildFile; fileRef = DBF6063525DEE4E900936ABC /* rom_symbols.sh */; };
-		DBF6066725DEE4E900936ABC /* platform_audio.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6063925DEE4E900936ABC /* platform_audio.c */; };
-		DBF6066A25DEE4E900936ABC /* platform_joystick.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6063D25DEE4E900936ABC /* platform_joystick.c */; };
 		DBF6066C25DEE4E900936ABC /* sdcard.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6064225DEE4E900936ABC /* sdcard.c */; };
 		DBF6066D25DEE4E900936ABC /* spi.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6064525DEE4E900936ABC /* spi.c */; };
 		DBF6068225DEF37500936ABC /* RBKeyboardSupportField.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF6067E25DEF37500936ABC /* RBKeyboardSupportField.m */; };
 		DBF6068325DEF37500936ABC /* RBRenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF6068125DEF37500936ABC /* RBRenderView.m */; };
-		DBF6068825DEF71F00936ABC /* platform_virtual_keys.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6068625DEF71F00936ABC /* platform_virtual_keys.c */; };
 		DBF6068C25DEFAF600936ABC /* rom.bin in Resources */ = {isa = PBXBuildFile; fileRef = DBF6068B25DEFAF600936ABC /* rom.bin */; };
-		DBF6069225DF9E4200936ABC /* platform_keyboard.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6069125DF9E4200936ABC /* platform_keyboard.c */; };
 		DBF6069725DFA73100936ABC /* RBGhost.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF6069625DFA73100936ABC /* RBGhost.m */; };
 		DBF6069F25DFAE5100936ABC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DBF6069E25DFAE5100936ABC /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DB1A537425E44AE4004F73EE /* platform_ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platform_ios.h; sourceTree = "<group>"; };
+		DB1A537525E44AE4004F73EE /* platform_audio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = platform_audio.c; sourceTree = "<group>"; };
+		DB1A537625E44AE4004F73EE /* platform_video.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = platform_video.c; sourceTree = "<group>"; };
+		DB1A537725E44AE4004F73EE /* platform_joystick.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = platform_joystick.c; sourceTree = "<group>"; };
+		DB1A537825E44AE4004F73EE /* platform_keyboard.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = platform_keyboard.c; sourceTree = "<group>"; };
+		DB1A537925E44AE4004F73EE /* platform_virtual_keys.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = platform_virtual_keys.c; sourceTree = "<group>"; };
+		DB1A537A25E44AE4004F73EE /* platform_main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = platform_main.c; sourceTree = "<group>"; };
+		DB1A537B25E44AE4004F73EE /* platform_virtual_keys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platform_virtual_keys.h; sourceTree = "<group>"; };
 		DBBAD25C25E0E87400BF2C79 /* Toolbar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Toolbar.h; sourceTree = "<group>"; };
 		DBBAD25D25E0E87400BF2C79 /* Toolbar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Toolbar.m; sourceTree = "<group>"; };
 		DBBAD26325E0ED7600BF2C79 /* video.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = video.c; path = ../../video.c; sourceTree = "<group>"; };
-		DBBAD26C25E2DA7000BF2C79 /* platform_main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = platform_main.c; path = ../../platform_main.c; sourceTree = "<group>"; };
 		DBF6054B25DECF7500936ABC /* x16-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "x16-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBF6054E25DECF7500936ABC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DBF6054F25DECF7500936ABC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -106,16 +113,12 @@
 		DBF6062D25DEE4E900936ABC /* rendertext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rendertext.h; path = ../../rendertext.h; sourceTree = "<group>"; };
 		DBF6062E25DEE4E900936ABC /* debugger.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = debugger.c; path = ../../debugger.c; sourceTree = "<group>"; };
 		DBF6062F25DEE4E900936ABC /* rom_symbols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rom_symbols.h; path = ../../rom_symbols.h; sourceTree = "<group>"; };
-		DBF6063025DEE4E900936ABC /* platform_video.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = platform_video.c; path = ../../platform_video.c; sourceTree = "<group>"; };
-		DBF6063225DEE4E900936ABC /* platform_ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = platform_ios.h; path = ../../platform_ios.h; sourceTree = "<group>"; };
 		DBF6063325DEE4E900936ABC /* spi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = spi.h; path = ../../spi.h; sourceTree = "<group>"; };
 		DBF6063425DEE4E900936ABC /* symbolize.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = symbolize.sh; path = ../../symbolize.sh; sourceTree = "<group>"; };
 		DBF6063525DEE4E900936ABC /* rom_symbols.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = rom_symbols.sh; path = ../../rom_symbols.sh; sourceTree = "<group>"; };
 		DBF6063725DEE4E900936ABC /* memory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = memory.h; path = ../../memory.h; sourceTree = "<group>"; };
-		DBF6063925DEE4E900936ABC /* platform_audio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = platform_audio.c; path = ../../platform_audio.c; sourceTree = "<group>"; };
 		DBF6063A25DEE4E900936ABC /* icon.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = icon.c; path = ../../icon.c; sourceTree = "<group>"; };
 		DBF6063B25DEE4E900936ABC /* vera_psg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vera_psg.h; path = ../../vera_psg.h; sourceTree = "<group>"; };
-		DBF6063D25DEE4E900936ABC /* platform_joystick.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = platform_joystick.c; path = ../../platform_joystick.c; sourceTree = "<group>"; };
 		DBF6063F25DEE4E900936ABC /* loadsave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = loadsave.h; path = ../../loadsave.h; sourceTree = "<group>"; };
 		DBF6064025DEE4E900936ABC /* vera_pcm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vera_pcm.h; path = ../../vera_pcm.h; sourceTree = "<group>"; };
 		DBF6064125DEE4E900936ABC /* icon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = icon.h; path = ../../icon.h; sourceTree = "<group>"; };
@@ -129,10 +132,7 @@
 		DBF6067F25DEF37500936ABC /* RBRenderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBRenderView.h; sourceTree = "<group>"; };
 		DBF6068025DEF37500936ABC /* RBKeyboardSupportField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBKeyboardSupportField.h; sourceTree = "<group>"; };
 		DBF6068125DEF37500936ABC /* RBRenderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBRenderView.m; sourceTree = "<group>"; };
-		DBF6068625DEF71F00936ABC /* platform_virtual_keys.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = platform_virtual_keys.c; path = ../../platform_virtual_keys.c; sourceTree = "<group>"; };
-		DBF6068725DEF71F00936ABC /* platform_virtual_keys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = platform_virtual_keys.h; path = ../../platform_virtual_keys.h; sourceTree = "<group>"; };
 		DBF6068B25DEFAF600936ABC /* rom.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; name = rom.bin; path = "../../../../../Downloads/x16emu_mac-r38/rom.bin"; sourceTree = "<group>"; };
-		DBF6069125DF9E4200936ABC /* platform_keyboard.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = platform_keyboard.c; path = ../../platform_keyboard.c; sourceTree = "<group>"; };
 		DBF6069525DFA73100936ABC /* RBGhost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBGhost.h; sourceTree = "<group>"; };
 		DBF6069625DFA73100936ABC /* RBGhost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBGhost.m; sourceTree = "<group>"; };
 		DBF6069E25DFAE5100936ABC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -149,6 +149,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB1A538325E44AED004F73EE /* platform */ = {
+			isa = PBXGroup;
+			children = (
+				DB1A537525E44AE4004F73EE /* platform_audio.c */,
+				DB1A537425E44AE4004F73EE /* platform_ios.h */,
+				DB1A537725E44AE4004F73EE /* platform_joystick.c */,
+				DB1A537825E44AE4004F73EE /* platform_keyboard.c */,
+				DB1A537A25E44AE4004F73EE /* platform_main.c */,
+				DB1A537625E44AE4004F73EE /* platform_video.c */,
+				DB1A537925E44AE4004F73EE /* platform_virtual_keys.c */,
+				DB1A537B25E44AE4004F73EE /* platform_virtual_keys.h */,
+				DBF605F925DEE31900936ABC /* Platform.m */,
+			);
+			name = platform;
+			sourceTree = "<group>";
+		};
 		DBF6054225DECF7500936ABC = {
 			isa = PBXGroup;
 			children = (
@@ -192,9 +208,9 @@
 		DBF6056A25DED00A00936ABC /* app */ = {
 			isa = PBXGroup;
 			children = (
+				DB1A538325E44AED004F73EE /* platform */,
 				DBF6054E25DECF7500936ABC /* AppDelegate.h */,
 				DBF6054F25DECF7500936ABC /* AppDelegate.m */,
-				DBF605F925DEE31900936ABC /* Platform.m */,
 				DBF6069525DFA73100936ABC /* RBGhost.h */,
 				DBF6069625DFA73100936ABC /* RBGhost.m */,
 				DBF6068025DEF37500936ABC /* RBKeyboardSupportField.h */,
@@ -234,14 +250,6 @@
 				DBF6064625DEE4E900936ABC /* main.c */,
 				DBF6060425DEE4E800936ABC /* memory.c */,
 				DBF6063725DEE4E900936ABC /* memory.h */,
-				DBF6063925DEE4E900936ABC /* platform_audio.c */,
-				DBF6063225DEE4E900936ABC /* platform_ios.h */,
-				DBF6063D25DEE4E900936ABC /* platform_joystick.c */,
-				DBF6069125DF9E4200936ABC /* platform_keyboard.c */,
-				DBBAD26C25E2DA7000BF2C79 /* platform_main.c */,
-				DBF6063025DEE4E900936ABC /* platform_video.c */,
-				DBF6068625DEF71F00936ABC /* platform_virtual_keys.c */,
-				DBF6068725DEF71F00936ABC /* platform_virtual_keys.h */,
 				DBF6060125DEE4E800936ABC /* ps2.c */,
 				DBF6064325DEE4E900936ABC /* ps2.h */,
 				DBF6061C25DEE4E800936ABC /* rendertext.c */,
@@ -392,31 +400,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB1A537D25E44AE4004F73EE /* platform_video.c in Sources */,
 				DBF6065125DEE4E900936ABC /* via.c in Sources */,
 				DBF6065F25DEE4E900936ABC /* disasm.c in Sources */,
 				DBF6066025DEE4E900936ABC /* debugger.c in Sources */,
 				DBF6065E25DEE4E900936ABC /* ym2151.c in Sources */,
 				DBF6065925DEE4E900936ABC /* rendertext.c in Sources */,
+				DB1A538125E44AE4004F73EE /* platform_main.c in Sources */,
 				DBF6066C25DEE4E900936ABC /* sdcard.c in Sources */,
 				DBF6064A25DEE4E900936ABC /* ps2.c in Sources */,
+				DB1A537C25E44AE4004F73EE /* platform_audio.c in Sources */,
 				DBF6065325DEE4E900936ABC /* fake6502.c in Sources */,
 				DBF6055625DECF7500936ABC /* ViewController.m in Sources */,
 				DBF6055025DECF7500936ABC /* AppDelegate.m in Sources */,
-				DBF6066A25DEE4E900936ABC /* platform_joystick.c in Sources */,
-				DBF6069225DF9E4200936ABC /* platform_keyboard.c in Sources */,
+				DB1A537E25E44AE4004F73EE /* platform_joystick.c in Sources */,
 				DBF605FA25DEE31900936ABC /* Platform.m in Sources */,
 				DBF6064C25DEE4E900936ABC /* memory.c in Sources */,
 				DBF6064B25DEE4E900936ABC /* vera_spi.c in Sources */,
 				DBF6056125DECF7500936ABC /* main.m in Sources */,
 				DBF6066D25DEE4E900936ABC /* spi.c in Sources */,
-				DBF6066125DEE4E900936ABC /* platform_video.c in Sources */,
 				DBBAD25E25E0E87400BF2C79 /* Toolbar.m in Sources */,
 				DBF6064925DEE4E900936ABC /* loadsave.c in Sources */,
-				DBBAD26D25E2DA7000BF2C79 /* platform_main.c in Sources */,
+				DB1A537F25E44AE4004F73EE /* platform_keyboard.c in Sources */,
 				DBF6064E25DEE4E900936ABC /* vera_psg.c in Sources */,
+				DB1A538025E44AE4004F73EE /* platform_virtual_keys.c in Sources */,
 				DBF6069725DFA73100936ABC /* RBGhost.m in Sources */,
-				DBF6068825DEF71F00936ABC /* platform_virtual_keys.c in Sources */,
-				DBF6066725DEE4E900936ABC /* platform_audio.c in Sources */,
 				DBF6065B25DEE4E900936ABC /* vera_pcm.c in Sources */,
 				DBF6055325DECF7500936ABC /* SceneDelegate.m in Sources */,
 				DBF6068325DEF37500936ABC /* RBRenderView.m in Sources */,

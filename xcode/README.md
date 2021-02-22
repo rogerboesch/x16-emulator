@@ -9,13 +9,14 @@ iOS Version is writen February 2021 by Roger Boesch.
 iOS Features
 --------
 
-* Start with default rom
+* Runs on iPhone and iPad (tvOS/watchOS coming soon)
+* Full emulator support
 * Support of virtual and physical keyboard
 * iCloud access: Type *LOAD "@"* to open the iCloud Drive and load the file
 * Copy/paste support
 * Touch support
 * Portrait and landscape support
-* Runs on iPhone and iPad
+* Switch between 80/40 character mode
 
 
 *Under development:*

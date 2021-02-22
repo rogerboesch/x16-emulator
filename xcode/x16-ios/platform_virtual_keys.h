@@ -9,7 +9,7 @@
 #ifndef PLATFORM_VIRTUAL_KEYS_H
 #define PLATFORM_VIRTUAL_KEYS_H
 
-#define KeyCharacterSet "ABCDEFGHIJKLMNOPQRSTUVWXZY0123456789()[]{}:;,.'\"/\\~=-+-*/<>!?@#$%^&|_` \t\r\0\b\e"
+#define KeyCharacterSet "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789()[]{}:;,.'\"/\\~=-+-*/<>!?@#$%^&|_` \t\r\0\b\e"
 
 typedef enum _RBVirtualKey {
 	RBVK_Unknown = -1, 		// Unhandled key

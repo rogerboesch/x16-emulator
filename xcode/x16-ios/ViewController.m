@@ -105,7 +105,6 @@ ViewController* INSTANCE_OF_VIEWCONTROLLER = NULL;
     CGPoint location = [recognizer locationInView:recognizer.view];
     int x = SCREEN_WIDTH / self.renderView.frame.size.width * location.x;
     int y = SCREEN_HEIGHT / self.renderView.frame.size.height * location.y;
-    NSLog(@"state: %lu", recognizer.state);
     
     RBEvent evt;
     evt.type = RBEVT_None;

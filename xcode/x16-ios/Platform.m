@@ -57,7 +57,7 @@ void platform_file_close(FILE* fp) {
 }
 
 size_t platform_file_read(FILE* fp, void* buf, size_t size, size_t mnemb) {
-    return fread(buf, size, mnemb, fp);
+     return fread(buf, size, mnemb, fp);
 }
 
 size_t platform_file_write(FILE* fp, void* buf, size_t size, size_t mnemb) {
