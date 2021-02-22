@@ -33,6 +33,8 @@ extern void machine_paste(char*);
         case 5:
             machine_toggle_geos();
             break;
+        case 6:
+            [RBGhost pressKey:0 code:RBVK_F4 ctrlPressed:NO];
     }
 }
 
@@ -64,6 +66,8 @@ extern void machine_paste(char*);
 
     [self addButton:@"stop" tag:1];
     [self addButton:@"paperclip.circle" tag:4];
+    [self addDelimiter:YES];
+    [self addButton:@"keyboard" tag:6];
     [self addDelimiter:YES];
     [self addButton:@"display" tag:5];
     [self addButton:@"speedometer" tag:2];
