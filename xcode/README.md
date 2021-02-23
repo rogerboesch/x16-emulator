@@ -17,14 +17,14 @@ iOS Features
 * Touch support
 * Portrait and landscape support
 * Switch between 80/40 character mode
+* SD card support
 
 
-*Under development:*
+*Coming soon:*
 
+* Debugger support (at work)
 * Audio Support
 * GEOS Support
-* SD card support
-* Debugger support
 
 For more infos about the Commander X16 project:
 - [The 8-Bit Guy](https://www.youtube.com/watch?v=ayh0qebfD2g&list=PLfABUWdDse7bKGFshxR0itdHBhjUj86SX)
