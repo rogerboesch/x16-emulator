@@ -19,6 +19,7 @@
 char* platform_get_base_path(void);
 char* platform_get_gif_path(void);
 char* platform_get_documents_path(void);
+char* platform_get_sdcard_path(char* name);
 double platform_get_ticks(void);
 
 // File support
@@ -32,6 +33,7 @@ int platform_file_seek(FILE *stream, long int offset, int whence);
 
 // Cloud support
 void platform_load_from_cloud(void);
+void platform_load_from_cloud_async(void); // Change later
 char* platform_wait_for_cloud_filename(void);
 
 // Render support

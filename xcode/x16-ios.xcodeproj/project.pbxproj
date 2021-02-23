@@ -13,6 +13,7 @@
 		DB1A537F25E44AE4004F73EE /* platform_keyboard.c in Sources */ = {isa = PBXBuildFile; fileRef = DB1A537825E44AE4004F73EE /* platform_keyboard.c */; };
 		DB1A538025E44AE4004F73EE /* platform_virtual_keys.c in Sources */ = {isa = PBXBuildFile; fileRef = DB1A537925E44AE4004F73EE /* platform_virtual_keys.c */; };
 		DB1A538125E44AE4004F73EE /* platform_main.c in Sources */ = {isa = PBXBuildFile; fileRef = DB1A537A25E44AE4004F73EE /* platform_main.c */; };
+		DB1A538725E50E4A004F73EE /* RBAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1A538625E50E4A004F73EE /* RBAlert.m */; };
 		DBBAD25E25E0E87400BF2C79 /* Toolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = DBBAD25D25E0E87400BF2C79 /* Toolbar.m */; };
 		DBF6055025DECF7500936ABC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF6054F25DECF7500936ABC /* AppDelegate.m */; };
 		DBF6055325DECF7500936ABC /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF6055225DECF7500936ABC /* SceneDelegate.m */; };
@@ -57,6 +58,8 @@
 		DB1A537925E44AE4004F73EE /* platform_virtual_keys.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = platform_virtual_keys.c; sourceTree = "<group>"; };
 		DB1A537A25E44AE4004F73EE /* platform_main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = platform_main.c; sourceTree = "<group>"; };
 		DB1A537B25E44AE4004F73EE /* platform_virtual_keys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platform_virtual_keys.h; sourceTree = "<group>"; };
+		DB1A538525E50E4A004F73EE /* RBAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBAlert.h; sourceTree = "<group>"; };
+		DB1A538625E50E4A004F73EE /* RBAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBAlert.m; sourceTree = "<group>"; };
 		DBBAD25C25E0E87400BF2C79 /* Toolbar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Toolbar.h; sourceTree = "<group>"; };
 		DBBAD25D25E0E87400BF2C79 /* Toolbar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Toolbar.m; sourceTree = "<group>"; };
 		DBBAD26325E0ED7600BF2C79 /* video.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = video.c; path = ../../video.c; sourceTree = "<group>"; };
@@ -211,16 +214,18 @@
 				DB1A538325E44AED004F73EE /* platform */,
 				DBF6054E25DECF7500936ABC /* AppDelegate.h */,
 				DBF6054F25DECF7500936ABC /* AppDelegate.m */,
+				DB1A538525E50E4A004F73EE /* RBAlert.h */,
+				DB1A538625E50E4A004F73EE /* RBAlert.m */,
 				DBF6069525DFA73100936ABC /* RBGhost.h */,
 				DBF6069625DFA73100936ABC /* RBGhost.m */,
 				DBF6068025DEF37500936ABC /* RBKeyboardSupportField.h */,
 				DBF6067E25DEF37500936ABC /* RBKeyboardSupportField.m */,
 				DBF6067F25DEF37500936ABC /* RBRenderView.h */,
 				DBF6068125DEF37500936ABC /* RBRenderView.m */,
-				DBBAD25C25E0E87400BF2C79 /* Toolbar.h */,
-				DBBAD25D25E0E87400BF2C79 /* Toolbar.m */,
 				DBF6055125DECF7500936ABC /* SceneDelegate.h */,
 				DBF6055225DECF7500936ABC /* SceneDelegate.m */,
+				DBBAD25C25E0E87400BF2C79 /* Toolbar.h */,
+				DBBAD25D25E0E87400BF2C79 /* Toolbar.m */,
 				DBF6055425DECF7500936ABC /* ViewController.h */,
 				DBF6055525DECF7500936ABC /* ViewController.m */,
 			);
@@ -418,6 +423,7 @@
 				DBF6064C25DEE4E900936ABC /* memory.c in Sources */,
 				DBF6064B25DEE4E900936ABC /* vera_spi.c in Sources */,
 				DBF6056125DECF7500936ABC /* main.m in Sources */,
+				DB1A538725E50E4A004F73EE /* RBAlert.m in Sources */,
 				DBF6066D25DEE4E900936ABC /* spi.c in Sources */,
 				DBBAD25E25E0E87400BF2C79 /* Toolbar.m in Sources */,
 				DBF6064925DEE4E900936ABC /* loadsave.c in Sources */,

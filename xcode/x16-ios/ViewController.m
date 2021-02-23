@@ -174,6 +174,7 @@ ViewController* INSTANCE_OF_VIEWCONTROLLER = NULL;
     INSTANCE_OF_VIEWCONTROLLER = self;
     
     self.toolbar = [[Toolbar alloc] initWithFrame:CGRectZero];
+    self.toolbar.viewController = self;
     [self.view addSubview:self.toolbar];
 
     self.renderView = [[RBRenderView alloc] initWithFrame:CGRectZero];
@@ -211,6 +212,12 @@ char* platform_wait_for_cloud_filename() {
 
 void platform_load_from_cloud() {
     dispatch_sync(dispatch_get_main_queue(), ^{
+        [INSTANCE_OF_VIEWCONTROLLER loadFromCloud];
+    });
+}
+
+void platform_load_from_cloud_async() {
+    dispatch_async(dispatch_get_main_queue(), ^{
         [INSTANCE_OF_VIEWCONTROLLER loadFromCloud];
     });
 }

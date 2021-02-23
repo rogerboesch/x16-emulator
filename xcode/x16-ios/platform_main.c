@@ -20,7 +20,7 @@
 #ifdef __MINGW32__
 #include <ctype.h>
 #endif
-#include "cpu/fake6502.h"
+#include "../../cpu/fake6502.h"
 #include "disasm.h"
 #include "memory.h"
 #include "video.h"
@@ -74,6 +74,9 @@ bool debugger_enabled = false;
 char *paste_text = NULL;
 char paste_text_data[65536];
 bool pasting_bas = false;
+
+char sdcard_path[256];
+bool use_sdcard = false;
 
 uint16_t num_ram_banks = 64; // 512 KB default
 
@@ -223,6 +226,42 @@ void machine_paste(char *s) {
         paste_text = s;
         pasting_bas = true;
     }
+}
+
+void machine_copy() {
+    // Implement save and copy to clipboard
+}
+
+void machine_set_sd_card(char* path) {
+    strcpy(sdcard_path, path);
+    use_sdcard = true;
+}
+
+void machine_attach_sdcard() {
+    if (!use_sdcard) {
+        return;
+    }
+    
+    if (sdcard_file != NULL) {
+        sdcard_detach();
+    }
+    
+    sdcard_file = SDL_RWFromFile(sdcard_path, "r+b");
+
+    if (!sdcard_file) {
+        printf("Cannot open %s!\n", sdcard_path);
+        return;
+    }
+
+    sdcard_attach();
+}
+
+void machine_deattach_sdcard() {
+    if (sdcard_file != NULL) {
+        sdcard_detach();
+    }
+    
+    sdcard_file = NULL;
 }
 
 void timing_init() {
@@ -382,7 +421,6 @@ int platform_main(bool record) {
     char *rom_path = rom_path_data;
     char *prg_path = NULL;
     char *bas_path = NULL;
-    char *sdcard_path = NULL;
     bool run_test = false;
     int test_number = 0;
     int audio_buffers = 8;
@@ -408,13 +446,8 @@ int platform_main(bool record) {
     (void)rom_size;
     SDL_RWclose(f);
 
-    if (sdcard_path) {
-        sdcard_file = SDL_RWFromFile(sdcard_path, "r+b");
-        if (!sdcard_file) {
-            printf("Cannot open %s!\n", sdcard_path);
-            exit(1);
-        }
-        sdcard_attach();
+    if (use_sdcard) {
+        machine_attach_sdcard();
     }
 
     prg_override_start = -1;

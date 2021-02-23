@@ -11,19 +11,25 @@
 
 char* platform_rom_file(void) {
     NSString* path = [[NSBundle mainBundle] pathForResource:@"rom" ofType:@"bin"];
+    NSLog(@"Rom path used: %@", path);
+    
     return (char *)[path UTF8String];
 }
 
 char* platform_get_base_path(void) {
     NSString* path = [[NSBundle mainBundle] resourcePath];
     path = [NSString stringWithFormat:@"%@/", path];
+    NSLog(@"Base path used: %@", path);
+
     return (char *)[path UTF8String];
 }
 
 char* platform_get_documents_path(void) {
     NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
-    NSString* documentsDirectory = [paths objectAtIndex:0];
-    return (char *)[documentsDirectory UTF8String];
+    NSString* path = [paths objectAtIndex:0];
+    NSLog(@"Documents path used: %@", path);
+
+    return (char *)[path UTF8String];
 }
 
 char* platform_get_gif_path(void) {
@@ -31,6 +37,16 @@ char* platform_get_gif_path(void) {
     path = [NSString stringWithFormat:@"%@/record.gif", path];
     
     NSLog(@"GIF path is: %@", path);
+    
+    return (char *)[path UTF8String];
+}
+
+char* platform_get_sdcard_path(char* name) {
+    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
+    NSString* path = [paths objectAtIndex:0];
+    path = [NSString stringWithFormat:@"%@/%s", path, name];
+    
+    NSLog(@"SD card path is: %@", path);
     
     return (char *)[path UTF8String];
 }

@@ -9,4 +9,6 @@
 
 @interface Toolbar : UIToolbar
 
+@property (nonatomic, assign) UIViewController* viewController;
+
 @end
