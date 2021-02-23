@@ -1014,6 +1014,7 @@ int poll_events(RBEvent* event) {
 
 void process_events() {
     RBEvent event;
+    
     while (poll_events(&event)) {
         if (event.type == RBEVT_Quit) {
             return;

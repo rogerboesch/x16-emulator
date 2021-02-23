@@ -14,6 +14,8 @@
 		DB1A538025E44AE4004F73EE /* platform_virtual_keys.c in Sources */ = {isa = PBXBuildFile; fileRef = DB1A537925E44AE4004F73EE /* platform_virtual_keys.c */; };
 		DB1A538125E44AE4004F73EE /* platform_main.c in Sources */ = {isa = PBXBuildFile; fileRef = DB1A537A25E44AE4004F73EE /* platform_main.c */; };
 		DB1A538725E50E4A004F73EE /* RBAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1A538625E50E4A004F73EE /* RBAlert.m */; };
+		DB6EA67025E54B3100A2F771 /* platform_debugger.c in Sources */ = {isa = PBXBuildFile; fileRef = DB6EA66F25E54B3100A2F771 /* platform_debugger.c */; };
+		DB6EA67425E54D4900A2F771 /* platform_rendertext.c in Sources */ = {isa = PBXBuildFile; fileRef = DB6EA67325E54D4900A2F771 /* platform_rendertext.c */; };
 		DBBAD25E25E0E87400BF2C79 /* Toolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = DBBAD25D25E0E87400BF2C79 /* Toolbar.m */; };
 		DBF6055025DECF7500936ABC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF6054F25DECF7500936ABC /* AppDelegate.m */; };
 		DBF6055325DECF7500936ABC /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF6055225DECF7500936ABC /* SceneDelegate.m */; };
@@ -33,11 +35,9 @@
 		DBF6065325DEE4E900936ABC /* fake6502.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6061025DEE4E800936ABC /* fake6502.c */; };
 		DBF6065525DEE4E900936ABC /* .editorconfig in Resources */ = {isa = PBXBuildFile; fileRef = DBF6061225DEE4E800936ABC /* .editorconfig */; };
 		DBF6065625DEE4E900936ABC /* 6502.opcodes in Resources */ = {isa = PBXBuildFile; fileRef = DBF6061725DEE4E800936ABC /* 6502.opcodes */; };
-		DBF6065925DEE4E900936ABC /* rendertext.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6061C25DEE4E800936ABC /* rendertext.c */; };
 		DBF6065B25DEE4E900936ABC /* vera_pcm.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6062225DEE4E800936ABC /* vera_pcm.c */; };
 		DBF6065E25DEE4E900936ABC /* ym2151.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6062A25DEE4E900936ABC /* ym2151.c */; };
 		DBF6065F25DEE4E900936ABC /* disasm.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6062C25DEE4E900936ABC /* disasm.c */; };
-		DBF6066025DEE4E900936ABC /* debugger.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6062E25DEE4E900936ABC /* debugger.c */; };
 		DBF6066325DEE4E900936ABC /* symbolize.sh in Resources */ = {isa = PBXBuildFile; fileRef = DBF6063425DEE4E900936ABC /* symbolize.sh */; };
 		DBF6066425DEE4E900936ABC /* rom_symbols.sh in Resources */ = {isa = PBXBuildFile; fileRef = DBF6063525DEE4E900936ABC /* rom_symbols.sh */; };
 		DBF6066C25DEE4E900936ABC /* sdcard.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6064225DEE4E900936ABC /* sdcard.c */; };
@@ -60,6 +60,8 @@
 		DB1A537B25E44AE4004F73EE /* platform_virtual_keys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platform_virtual_keys.h; sourceTree = "<group>"; };
 		DB1A538525E50E4A004F73EE /* RBAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBAlert.h; sourceTree = "<group>"; };
 		DB1A538625E50E4A004F73EE /* RBAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBAlert.m; sourceTree = "<group>"; };
+		DB6EA66F25E54B3100A2F771 /* platform_debugger.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = platform_debugger.c; sourceTree = "<group>"; };
+		DB6EA67325E54D4900A2F771 /* platform_rendertext.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = platform_rendertext.c; sourceTree = "<group>"; };
 		DBBAD25C25E0E87400BF2C79 /* Toolbar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Toolbar.h; sourceTree = "<group>"; };
 		DBBAD25D25E0E87400BF2C79 /* Toolbar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Toolbar.m; sourceTree = "<group>"; };
 		DBBAD26325E0ED7600BF2C79 /* video.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = video.c; path = ../../video.c; sourceTree = "<group>"; };
@@ -156,10 +158,12 @@
 			isa = PBXGroup;
 			children = (
 				DB1A537525E44AE4004F73EE /* platform_audio.c */,
+				DB6EA66F25E54B3100A2F771 /* platform_debugger.c */,
 				DB1A537425E44AE4004F73EE /* platform_ios.h */,
 				DB1A537725E44AE4004F73EE /* platform_joystick.c */,
 				DB1A537825E44AE4004F73EE /* platform_keyboard.c */,
 				DB1A537A25E44AE4004F73EE /* platform_main.c */,
+				DB6EA67325E54D4900A2F771 /* platform_rendertext.c */,
 				DB1A537625E44AE4004F73EE /* platform_video.c */,
 				DB1A537925E44AE4004F73EE /* platform_virtual_keys.c */,
 				DB1A537B25E44AE4004F73EE /* platform_virtual_keys.h */,
@@ -408,9 +412,7 @@
 				DB1A537D25E44AE4004F73EE /* platform_video.c in Sources */,
 				DBF6065125DEE4E900936ABC /* via.c in Sources */,
 				DBF6065F25DEE4E900936ABC /* disasm.c in Sources */,
-				DBF6066025DEE4E900936ABC /* debugger.c in Sources */,
 				DBF6065E25DEE4E900936ABC /* ym2151.c in Sources */,
-				DBF6065925DEE4E900936ABC /* rendertext.c in Sources */,
 				DB1A538125E44AE4004F73EE /* platform_main.c in Sources */,
 				DBF6066C25DEE4E900936ABC /* sdcard.c in Sources */,
 				DBF6064A25DEE4E900936ABC /* ps2.c in Sources */,
@@ -424,6 +426,7 @@
 				DBF6064B25DEE4E900936ABC /* vera_spi.c in Sources */,
 				DBF6056125DECF7500936ABC /* main.m in Sources */,
 				DB1A538725E50E4A004F73EE /* RBAlert.m in Sources */,
+				DB6EA67025E54B3100A2F771 /* platform_debugger.c in Sources */,
 				DBF6066D25DEE4E900936ABC /* spi.c in Sources */,
 				DBBAD25E25E0E87400BF2C79 /* Toolbar.m in Sources */,
 				DBF6064925DEE4E900936ABC /* loadsave.c in Sources */,
@@ -431,6 +434,7 @@
 				DBF6064E25DEE4E900936ABC /* vera_psg.c in Sources */,
 				DB1A538025E44AE4004F73EE /* platform_virtual_keys.c in Sources */,
 				DBF6069725DFA73100936ABC /* RBGhost.m in Sources */,
+				DB6EA67425E54D4900A2F771 /* platform_rendertext.c in Sources */,
 				DBF6065B25DEE4E900936ABC /* vera_pcm.c in Sources */,
 				DBF6055325DECF7500936ABC /* SceneDelegate.m in Sources */,
 				DBF6068325DEF37500936ABC /* RBRenderView.m in Sources */,

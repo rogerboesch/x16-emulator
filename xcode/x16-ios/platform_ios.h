@@ -15,6 +15,15 @@
 
 #include <stdio.h>
 
+// Types (temporary)
+typedef struct platform_color {
+    uint8_t r,g,b,a;
+} PLATFORM_COLOR;
+
+typedef struct platform_rect {
+    int x,y,w,h;
+} PLATFORM_RECT;
+
 // Path support
 char* platform_get_base_path(void);
 char* platform_get_gif_path(void);
@@ -45,7 +54,8 @@ char* platform_get_from_clipboard(void);
 // Temporary, will be replaced later
 #define SDL_Keycode uint8_t
 #define SDL_Scancode uint8_t
-#define SDL_Color uint8_t
+#define SDL_Rect PLATFORM_RECT
+#define SDL_Color PLATFORM_COLOR
 
 // Replace this later by platform independent types
 #define SDL_Renderer void

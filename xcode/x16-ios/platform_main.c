@@ -417,6 +417,7 @@ int platform_main(bool record) {
 
     char *rom_filename = "rom.bin";
     char rom_path_data[PATH_MAX];
+    debugger_enabled = true;
 
     char *rom_path = rom_path_data;
     char *prg_path = NULL;

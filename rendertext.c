@@ -1,10 +1,9 @@
 #include <string.h>
+#include <SDL.h>
 #ifdef __MINGW32__
 #include <ctype.h>
 #endif
 #include "rendertext.h"
-#include <ctype.h>
-#include "platform_ios.h"
 
 #define CHAR_WIDTH 5
 #define CHAR_HEIGHT 7
@@ -16,7 +15,7 @@ int xPos = 0;
 int yPos = 0;
 
 // font texture
-//SDL_Texture *fontTexture;
+SDL_Texture *fontTexture;
 int textureInitialized = 0;
 
 // *******************************************************************************************
@@ -140,9 +139,7 @@ static unsigned char fontdata[] = {
 // *******************************************************************************************
 
 void DEBUGInitChars(SDL_Renderer *renderer) {
-    // TODO: Implement debug text
-/*
-    uint16_t textureData[TEXTURE_WIDTH * TEXTURE_HEIGHT];
+	uint16_t textureData[TEXTURE_WIDTH * TEXTURE_HEIGHT];
 	memset(textureData, 0, sizeof textureData);
 
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "nearest");
@@ -162,7 +159,6 @@ void DEBUGInitChars(SDL_Renderer *renderer) {
 	}
 	SDL_UpdateTexture(fontTexture, NULL, &textureData, TEXTURE_WIDTH*2);
 	textureInitialized = 1;
- */
 }
 
 // *******************************************************************************************
@@ -172,9 +168,6 @@ void DEBUGInitChars(SDL_Renderer *renderer) {
 // *******************************************************************************************
 
 void DEBUGWrite(SDL_Renderer *renderer, int x, int y, int ch, SDL_Color colour) {
-    // TODO: Implement debugwrite
-
-    /*
 	if (!textureInitialized) {
 		DEBUGInitChars(renderer);
 	}
@@ -193,7 +186,6 @@ void DEBUGWrite(SDL_Renderer *renderer, int x, int y, int ch, SDL_Color colour) 
 		CHAR_HEIGHT
 	};
 	SDL_RenderCopy(renderer, fontTexture, &srcRect, &dstRect);
-     */
 }
 
 // *******************************************************************************************
