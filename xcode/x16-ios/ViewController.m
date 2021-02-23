@@ -186,7 +186,7 @@ ViewController* INSTANCE_OF_VIEWCONTROLLER = NULL;
     [self.view addSubview:self.supportField];
 
     self.supportField.callback = ^(int ch, int code, BOOL ctrlPressed) {
-        if (ctrlPressed && ch == 'x') {
+        if (ctrlPressed && ch == 'c') {
             [RBGhost pressKey:0 code:RBVK_Escape ctrlPressed: false];
         }
         else {

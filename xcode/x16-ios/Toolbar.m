@@ -178,7 +178,7 @@ typedef enum : NSUInteger {
     [self addButton:@"arrow.right.doc.on.clipboard" tool:ToolCopy];
     [self addDelimiter:YES];
     [self addButton:@"keyboard" tool:ToolTextLine];
-    [self addButton:@"sdcard" tool:ToolTextLine];
+    [self addButton:@"sdcard" tool:ToolSDCard];
 //    [self addButton:@"display" tool:ToolGEOS];
     [self addButton:@"speedometer" tool:ToolWarp];
     [self addDelimiter:YES];
