@@ -42,17 +42,19 @@ ViewController* INSTANCE_OF_VIEWCONTROLLER = NULL;
 @property (nonatomic, retain) RBRenderView* renderView;
 @property (nonatomic, retain) RBKeyboardSupportField* supportField;
 
-@property (nonatomic, retain) NSString* cloudFilename;
-@property (nonatomic) BOOL cloudPickerActive;
+@property (nonatomic, retain) NSString* externalFilename;
+@property (nonatomic) BOOL documentPickerActive;
 
 @end
 
 @implementation ViewController
 
+#ifndef APP_STORE
+
 // MARK: - Cloud support
 
 - (void)documentPickerWasCancelled:(UIDocumentPickerViewController *)controller {
-    self.cloudPickerActive = NO;
+    self.documentPickerActive = NO;
 }
 
 - (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentsAtURLs:(NSArray<NSURL *> *)urls {
@@ -64,40 +66,46 @@ ViewController* INSTANCE_OF_VIEWCONTROLLER = NULL;
         NSError *error = nil;
         [fileCoordinator coordinateReadingItemAtURL:originalURL options:NSFileCoordinatorReadingForUploading error:&error byAccessor:^(NSURL *newURL) {
             // Read contant
-            NSData* data = [NSData dataWithContentsOfURL:originalURL];
-            if (data != nil) {
-                // Save to documents
-                NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
-                NSString* documentsDirectory = [paths objectAtIndex:0];
-                NSString* path = [NSString stringWithFormat:@"%@/TEMP", documentsDirectory];
-                [data writeToFile:path atomically:NO];
+            NSError* error = NULL;
+            NSString* str = [NSString stringWithContentsOfURL:originalURL encoding:NSUTF8StringEncoding error:&error];
+            if (str != NULL && error == NULL) {
+                NSData* data = [NSData dataWithContentsOfURL:originalURL];
+                if (data != nil) {
+                    // Save to documents
+                    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
+                    NSString* documentsDirectory = [paths objectAtIndex:0];
+                    NSString* path = [NSString stringWithFormat:@"%@/TEMP", documentsDirectory];
+                    [data writeToFile:path atomically:NO];
 
-                self.cloudFilename = path;
+                    self.externalFilename = path;
+                }
             }
             else {
-                self.cloudFilename = @"";
+                self.externalFilename = @"";
             }
             
             [originalURL stopAccessingSecurityScopedResource];
             
-            self.cloudPickerActive = NO;
+            self.documentPickerActive = NO;
         }];
     }
     else {
-        self.cloudFilename = @"";
-        self.cloudPickerActive = NO;
+        self.externalFilename = @"";
+        self.documentPickerActive = NO;
     }
 }
 
-- (void)loadFromCloud {
+- (void)loadExternalFile {
     UIDocumentPickerViewController *documentProvider;
     documentProvider = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:[NSArray arrayWithObjects:@"public.item", nil] inMode: UIDocumentPickerModeOpen];
     documentProvider.delegate = self;
     documentProvider.modalPresentationStyle = UIModalPresentationOverFullScreen;
     
-    self.cloudPickerActive = YES;
+    self.documentPickerActive = YES;
     [self presentViewController:documentProvider animated:YES completion:NULL];
 }
+
+#endif
 
 // MARK: - Mouse support
 
@@ -170,7 +178,7 @@ ViewController* INSTANCE_OF_VIEWCONTROLLER = NULL;
     [super viewDidLoad];
     
     self.view.backgroundColor = UIColor.blackColor;
-    self.cloudFilename = @"";
+    self.externalFilename = @"";
     INSTANCE_OF_VIEWCONTROLLER = self;
     
     self.toolbar = [[Toolbar alloc] initWithFrame:CGRectZero];
@@ -202,22 +210,27 @@ ViewController* INSTANCE_OF_VIEWCONTROLLER = NULL;
 
 // TODO: This is a hacky implementation, use later pipes o.ae.
 
-char* platform_wait_for_cloud_filename() {
-    while (INSTANCE_OF_VIEWCONTROLLER.cloudPickerActive) {
+#ifndef APP_STORE
+
+char* platform_wait_for_external_filename() {
+    while (INSTANCE_OF_VIEWCONTROLLER.documentPickerActive) {
         usleep(100);
     }
 
-    return (char *)[INSTANCE_OF_VIEWCONTROLLER.cloudFilename UTF8String];
+    return (char *)[INSTANCE_OF_VIEWCONTROLLER.externalFilename UTF8String];
 }
 
-void platform_load_from_cloud() {
+void platform_load_external_file() {
     dispatch_sync(dispatch_get_main_queue(), ^{
-        [INSTANCE_OF_VIEWCONTROLLER loadFromCloud];
+        [INSTANCE_OF_VIEWCONTROLLER loadExternalFile];
     });
 }
 
-void platform_load_from_cloud_async() {
+void platform_load_external_file_async() {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [INSTANCE_OF_VIEWCONTROLLER loadFromCloud];
+        [INSTANCE_OF_VIEWCONTROLLER loadExternalFile];
     });
 }
+
+#endif
+

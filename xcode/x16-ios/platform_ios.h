@@ -13,6 +13,8 @@
 
 #ifdef TARGET_OS_IPHONE
 
+#define APP_STORE 1
+
 #include <stdio.h>
 
 // Types (temporary)
@@ -41,9 +43,11 @@ void platform_file_write_u8(FILE* fp, uint8_t byte);
 int platform_file_seek(FILE *stream, long int offset, int whence);
 
 // Cloud support
-void platform_load_from_cloud(void);
-void platform_load_from_cloud_async(void); // Change later
-char* platform_wait_for_cloud_filename(void);
+#ifndef APP_STORE
+void platform_load_external_file(void);
+void platform_load_external_file_async(void); // Change later
+char* platform_wait_for_external_filename(void);
+#endif
 
 // Render support
 void platform_render_buffer(uint8_t* framebuffer);

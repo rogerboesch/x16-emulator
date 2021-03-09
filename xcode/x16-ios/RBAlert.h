@@ -11,5 +11,6 @@
 
 + (void)run:(UIViewController *)parent title:(NSString *)title text:(NSString *)text buttons:(NSArray *)buttons completion:(void (^)(int))completion;
 + (void)runYesNo:(UIViewController *)parent title:(NSString *)title text:(NSString *)text completion:(void (^)(BOOL))completion;
++ (void)error:(UIViewController *)parent text:(NSString *)text;
 
 @end

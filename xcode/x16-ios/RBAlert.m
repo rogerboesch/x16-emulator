@@ -54,5 +54,19 @@
     [parent presentViewController:alert animated:YES completion:nil];
 }
 
++ (void)error:(UIViewController *)parent text:(NSString *)text {
+    UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:text
+                                preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction* yesButton = [UIAlertAction
+                               actionWithTitle:@"OK"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction * action) {
+                               }];
+    [alert addAction:yesButton];
+
+    [parent presentViewController:alert animated:YES completion:nil];
+}
+
 @end
 

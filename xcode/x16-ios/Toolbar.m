@@ -26,17 +26,24 @@ typedef enum : NSUInteger {
     ToolPaste,
     ToolGEOS,
     ToolTextLine,
-    ToolSDCard,
-    ToolCopy
+#ifndef APP_STORE
+    ToolSDCard
+    ToolBasicFile
+#endif
+    ToolCopy,
 } Tool;
 
 @interface Toolbar()
+#ifndef APP_STORE
 @property (nonatomic) BOOL hasSDCard;
+#endif
 @end
 
 @implementation Toolbar
 
 // MARK: - SD card functionality
+
+#ifndef APP_STORE
 
 - (void)loadSDcard{
     self.hasSDCard = [[NSUserDefaults standardUserDefaults] boolForKey:@"sd_card"];
@@ -49,8 +56,8 @@ typedef enum : NSUInteger {
 
 - (void)mapNewCard {
     // Need to load/copy first
-    platform_load_from_cloud_async();
-    platform_wait_for_cloud_filename();
+    platform_load_external_file_async();
+    platform_wait_for_external_filename();
     
     // rename to sdcard.img
     NSString* fromPath = [NSString stringWithFormat:@"%s/TEMP", platform_get_documents_path()];
@@ -95,8 +102,8 @@ typedef enum : NSUInteger {
     }
     else {
         // Need to load/copy first
-        platform_load_from_cloud_async();
-        platform_wait_for_cloud_filename();
+        platform_load_external_file_async();
+        platform_wait_for_external_filename();
         
         // rename to sdcard.img
         NSString* fromPath = [NSString stringWithFormat:@"%s/TEMP", platform_get_documents_path()];
@@ -112,6 +119,35 @@ typedef enum : NSUInteger {
     
     [self saveSDcardPath];
 }
+
+#endif
+
+// MARK: - Load Basic file
+
+#ifndef APP_STORE
+
+- (void)loadBasicFile {
+    // Need to load/copy first
+    platform_load_external_file();
+    platform_wait_for_external_filename();
+    
+    // rename to sdcard.img
+    NSString* fromPath = [NSString stringWithFormat:@"%s/TEMP", platform_get_documents_path()];
+    
+    NSError* error = NULL;
+    NSString* str = [NSString stringWithContentsOfFile:fromPath encoding:NSUTF8StringEncoding error:&error];
+    if (str == NULL || error != NULL) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [RBAlert error:self.viewController text:@"You can just load readable BASIC files (ASCII format) from your iCloud Drive"];
+        });
+
+        return;
+    }
+    
+    machine_paste((char *)[str UTF8String]);
+}
+
+#endif
 
 // MARK: - Toolbar UI
 
@@ -138,9 +174,15 @@ typedef enum : NSUInteger {
         case ToolTextLine:
             [RBGhost pressKey:0 code:RBVK_F4 ctrlPressed:NO];
             break;
+
+#ifndef APP_STORE
         case ToolSDCard:
             [self attachSDcard];
             break;
+        case ToolBasicFile:
+            [self performSelectorInBackground:@selector(loadBasicFile) withObject:NULL];
+            break;
+#endif
     }
 }
 
@@ -170,16 +212,25 @@ typedef enum : NSUInteger {
 
     self.barTintColor = UIColor.blackColor;
 
+#ifndef APP_STORE
     [self loadSDcard];
+#endif
     
     [self addButton:@"stop" tool:ToolBreak];
     [self addDelimiter:YES];
+    
+#ifndef APP_STORE
+    [self addButton:@"doc.circle.fill" tool:ToolBasicFile];
+#endif
+    
     [self addButton:@"doc.on.clipboard" tool:ToolPaste];
-    [self addButton:@"arrow.right.doc.on.clipboard" tool:ToolCopy];
-    [self addDelimiter:YES];
+    // [self addButton:@"arrow.right.doc.on.clipboard" tool:ToolCopy]; Coming soon
+    [self   addDelimiter:YES];
     [self addButton:@"keyboard" tool:ToolTextLine];
+
+#ifndef APP_STORE
     [self addButton:@"sdcard" tool:ToolSDCard];
-//    [self addButton:@"display" tool:ToolGEOS];
+#endif
     [self addButton:@"speedometer" tool:ToolWarp];
     [self addDelimiter:YES];
     [self addButton:@"restart.circle" tool:ToolReset];

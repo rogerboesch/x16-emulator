@@ -131,11 +131,13 @@ LOAD()
 
 	uint16_t override_start = (x | (y << 8));
 
+#if 0 // Disable
     if (filename[0] == '@') {
         // Load file from cloud
-        platform_load_from_cloud();
-        sprintf(filename, "%s", platform_wait_for_cloud_filename());
+        platform_load_external_file();
+        sprintf(filename, "%s", platform_wait_for_external_filename());
     }
+#endif
     
 	if (filename[0] == '$') {
 		uint16_t dir_len = create_directory_listing(RAM + override_start);

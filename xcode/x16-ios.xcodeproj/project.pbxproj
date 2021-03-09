@@ -31,22 +31,16 @@
 		DBF6064C25DEE4E900936ABC /* memory.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6060425DEE4E800936ABC /* memory.c */; };
 		DBF6064E25DEE4E900936ABC /* vera_psg.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6060625DEE4E800936ABC /* vera_psg.c */; };
 		DBF6065125DEE4E900936ABC /* via.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6060C25DEE4E800936ABC /* via.c */; };
-		DBF6065225DEE4E900936ABC /* 65c02.opcodes in Resources */ = {isa = PBXBuildFile; fileRef = DBF6060E25DEE4E800936ABC /* 65c02.opcodes */; };
 		DBF6065325DEE4E900936ABC /* fake6502.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6061025DEE4E800936ABC /* fake6502.c */; };
-		DBF6065525DEE4E900936ABC /* .editorconfig in Resources */ = {isa = PBXBuildFile; fileRef = DBF6061225DEE4E800936ABC /* .editorconfig */; };
-		DBF6065625DEE4E900936ABC /* 6502.opcodes in Resources */ = {isa = PBXBuildFile; fileRef = DBF6061725DEE4E800936ABC /* 6502.opcodes */; };
 		DBF6065B25DEE4E900936ABC /* vera_pcm.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6062225DEE4E800936ABC /* vera_pcm.c */; };
 		DBF6065E25DEE4E900936ABC /* ym2151.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6062A25DEE4E900936ABC /* ym2151.c */; };
 		DBF6065F25DEE4E900936ABC /* disasm.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6062C25DEE4E900936ABC /* disasm.c */; };
-		DBF6066325DEE4E900936ABC /* symbolize.sh in Resources */ = {isa = PBXBuildFile; fileRef = DBF6063425DEE4E900936ABC /* symbolize.sh */; };
-		DBF6066425DEE4E900936ABC /* rom_symbols.sh in Resources */ = {isa = PBXBuildFile; fileRef = DBF6063525DEE4E900936ABC /* rom_symbols.sh */; };
 		DBF6066C25DEE4E900936ABC /* sdcard.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6064225DEE4E900936ABC /* sdcard.c */; };
 		DBF6066D25DEE4E900936ABC /* spi.c in Sources */ = {isa = PBXBuildFile; fileRef = DBF6064525DEE4E900936ABC /* spi.c */; };
 		DBF6068225DEF37500936ABC /* RBKeyboardSupportField.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF6067E25DEF37500936ABC /* RBKeyboardSupportField.m */; };
 		DBF6068325DEF37500936ABC /* RBRenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF6068125DEF37500936ABC /* RBRenderView.m */; };
 		DBF6068C25DEFAF600936ABC /* rom.bin in Resources */ = {isa = PBXBuildFile; fileRef = DBF6068B25DEFAF600936ABC /* rom.bin */; };
 		DBF6069725DFA73100936ABC /* RBGhost.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF6069625DFA73100936ABC /* RBGhost.m */; };
-		DBF6069F25DFAE5100936ABC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DBF6069E25DFAE5100936ABC /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -389,13 +383,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DBF6065225DEE4E900936ABC /* 65c02.opcodes in Resources */,
-				DBF6066425DEE4E900936ABC /* rom_symbols.sh in Resources */,
-				DBF6069F25DFAE5100936ABC /* README.md in Resources */,
-				DBF6065525DEE4E900936ABC /* .editorconfig in Resources */,
 				DBF6068C25DEFAF600936ABC /* rom.bin in Resources */,
-				DBF6066325DEE4E900936ABC /* symbolize.sh in Resources */,
-				DBF6065625DEE4E900936ABC /* 6502.opcodes in Resources */,
 				DBF6055E25DECF7500936ABC /* LaunchScreen.storyboard in Resources */,
 				DBF6055B25DECF7500936ABC /* Assets.xcassets in Resources */,
 				DBF6055925DECF7500936ABC /* Main.storyboard in Resources */,
@@ -582,14 +570,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 100;
+				CURRENT_PROJECT_VERSION = 110;
 				DEVELOPMENT_TEAM = F46T393V5A;
 				INFOPLIST_FILE = "x16-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rogerboesch.ios.x16;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -602,14 +590,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 100;
+				CURRENT_PROJECT_VERSION = 110;
 				DEVELOPMENT_TEAM = F46T393V5A;
 				INFOPLIST_FILE = "x16-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rogerboesch.ios.x16;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
